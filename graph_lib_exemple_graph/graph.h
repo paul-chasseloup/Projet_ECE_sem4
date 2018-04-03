@@ -314,6 +314,8 @@ class Graph
 
         ///Méthodes
         void lireFichier(std::string nomFichier);
+        void Creation(const std::string& nom_du_fichier);
+        void Sauvegarde(const std::string& nom_du_fichier);
         void allouer_mat(int ordre);
         void afficher();
 };

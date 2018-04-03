@@ -186,6 +186,7 @@ void Graph::make_example()
     add_interfaced_edge(7, 2, 0, 100.0);
     add_interfaced_edge(8, 5, 2, 20.0);
     add_interfaced_edge(9, 3, 7, 80.0);
+
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
@@ -313,4 +314,81 @@ void Graph::afficher()
         }
     }
 
-}
+};
+void Graph::Creation(const std::string& nom_du_fichier)
+{
+    std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
+	// Déclaration des variables
+	// pour la boucle de remplissage
+    int i=0;
+	// pour les données saisies
+    std::string A1,A2;
+    int pos_x, pos_y;
+
+    if(ofs)
+    {
+        // On montre que le fichier est bien ouvert
+        std::cout << "Writing " << nom_du_fichier << " => OK" << std::endl;
+	// On remplit autant qu'on veut
+        while (i!=1)
+        {
+		//Boucle intéractive
+            std::cout << "Premier element : " << std::endl;
+		//On saisit le premier element
+            std::cin >>A1;
+		//On saisit le deuxieme element
+            std::cout << "Deuxieme element : " << std::endl;
+            std::cin >>A2;
+            //Boucle intéractive
+            std::cout << "Pos_x : " << std::endl;
+		//On saisit le premier element
+            std::cin >>pos_x;
+		//On saisit le deuxieme element
+            std::cout << "Pos_y : " << std::endl;
+            std::cin >>pos_y;
+		// On inscrit dans le fichier
+             ofs << A1 << A2 << pos_x << pos_y << std::endl;
+             std::cout << "Appuyez sur 1 pour arreter, sur une autre touche sinon : " << std::endl;
+             std::cin >>i;
+        }
+
+	std::cout << "Ecriture reussie" << std::endl;
+    }
+    else
+    {
+        std::cout << "Cannot write " << nom_du_fichier << std::endl;
+    }
+};
+/// SAUVEGARDE :
+/// Le principe de ce sous-programme est d'être appelé à la fin de chaque session dans une boucle qui prendra en compte tous les elements
+/// qui constituent la scene en train d'etre jouee.
+
+void Graph::Sauvegarde(const std::string& nom_du_fichier)
+{
+
+
+    for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end();it++)
+        {
+            it->first; //key
+            it->second; //pointe sur le vertex
+            std::cout<< it->second.m_interface->m_top_box.get_posx() << " " << it->second.m_interface->m_top_box.get_posy()<< std::endl;
+        }
+   /* std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
+    if(ofs)
+    {
+        for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end();it++)
+        {
+            it->first; //key
+            it->second; //pointe sur le vertex
+            ofs << it->second.m_interface->m_top_box.get_posx() <<it->second.m_interface->m_top_box.get_posy();
+        }
+
+		// On inscrit dans le fichier
+
+	std::cout << "Ecriture reussie" << std::endl;
+    }
+    else
+    {
+        std::cout << "Cannot write " << nom_du_fichier << std::endl;
+    }*/
+};

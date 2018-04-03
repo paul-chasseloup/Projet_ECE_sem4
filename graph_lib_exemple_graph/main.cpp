@@ -30,12 +30,16 @@ int main()
     grman::fermer_allegro();
     Graph mat1;
     std::string fichier;
-    std::cout<<"Entree le nom du fichier : Graphe1.txt"<<std::endl;
-    std::cin>>fichier;
-    std::cout<<std::endl;
+    std::string nom ="Homme";
+    std::string nom1 ="Rongeur";
+
+    // std::cout<<"Entree le nom du fichier : Graphe1.txt"<<std::endl;
+    // std::cin>>fichier;
+    // std::cout<<std::endl;
     ///Appel des sous programmes
-    mat1.lireFichier(fichier);
-    mat1.afficher();
+    //mat1.lireFichier(fichier);
+    //mat1.afficher();
+    mat1.Sauvegarde(fichier);
 
     return 0;
 }
