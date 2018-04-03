@@ -1,0 +1,113 @@
+--------------------------------------------------------------------------------------------
+				PRESENTATION
+
+
+Les projets de cette archives donnent une base de code utilisable pour le projet 
+théorie des graphes. Le projet ne parle pas de Clowns. Les Clowns ne sont qu'un 
+simple support d'illustration. 
+
+L'utilisation de ce code n'est pas obligatoire, vous pouvez mettre en place votre 
+propre système d'interaction avec un graphe orienté/pondéré du moment qu'il offre
+des fonctionnalités similaires. Veuillez voir les 2 capture d'écran ci jointes.
+
+Une bibliothèque C++ professionnelle d'interface graphique (GUI) a été envisagée :
+wxWidgets a été testé en ce sens, mais la complexité et l'opacité des procédures 
+et la courbe d'apprentissage d'une telle bibliothèque m'a rapidement paru rédhibitoire.
+
+Vous pouvez si vous avez la motivation et un bon niveau essayer de faire le projet 
+avec wxWidget ou Qt, mais prévoyez de revenir à une solution plus simple en cas 
+de blocages (par exemple difficultés avec le dessin des arêtes)
+
+La "bibliothèque" de Widgets proposée ici a l'inconvénient d'être "artisanale" : 
+il y subsiste certainement des bugs, l'ensemble des fonctionnalités est très loin 
+d'être complet, les approches ne sont pas toujours satisfaisantes, mais l'avantage 
+est d'avoir un code relativement compact (<2000 lignes) qui n'utilise pratiquement 
+que des techniques que vous connaissez. Vous pouvez donc "mettre les mains dans 
+le moteur" pour compléter/adapter ce code de départ à vos besoins.
+
+Il n'y a pas de manuel d'utilisation : basez vous sur les exemples d'une classe 
+de test (Thing dans test.h et test.cpp de graph_lib_exemple_test) et d'une classe 
+implémentant un graphe orienté pondéré (Vertex/Edge/Graph dans graph.h et graph.cpp 
+de graph_lib_exemple_graph) pour voir les possibilités de l'API. N'hésitez pas 
+à plonger dans les répertoires techniques, en particulier grman/widget.h et .cpp
+pour voir les détails d'implémentation. Le code est en général commenté mais 
+incomplètement structuré, avec des couplages trop important (confusion données/vue)
+je m'en excuse d'avance. Tout travail significatif de re-structuration de ce code 
+en vue d'une meilleur lisibilité sera à faire valoir en soutenance.
+
+
+
+--------------------------------------------------------------------------------------------
+				INSTALLATION
+
+
+Pour ouvrir les projets, commencez par dézipper cette archive, puis ouvrez les fichiers .cbp
+
+Testez la compilation. Si ça compile vous êtes opérationnels.
+
+Sinon :
+
+Rebuild (Ctrl + F11)
+
+Toujours pas :
+
+Pour (re)compiler les projets ci joints vous devez avoir installé le package Allegro avec le support des fichiers image png et jpg, indiqué en bas de la page de référence :
+www.ece.fr/~fercoq/allegro/index.html
+
+Lien direct vers la procédure d'installation du package Allegro 
+http://www.ece.fr/~fercoq/allegro/distribution/readme.txt
+
+Lien direct vers le package Allegro
+http://www.ece.fr/~fercoq/allegro/distribution/allegro_4_4_install.zip
+
+Vous devez aussi avoir un code::blocks récent sinon vous aurez des erreurs de compilation liées à la fonction to_string.
+
+
+
+
+Procedure de ré-installation complète en cas de dysfonctionnement persistent
+Cette procédure est valable pour un système Windows, natif ou en machine virtuelle :
+====================================================================================
+
+Désinstaller Code::Blocks
+Effacer le répertoire de Code::Blocks (par défaut C:\Program Files (x86)\CodeBlocks
+
+Si il est installé, désinstaller CodeAnalysis
+Effacer le répertoire de CodeAnalysis (par défaut C:\Program Files (x86)\CodeAnalysis Suite
+
+Télécharger la dernière version de Code::Blocks avec compilateur :
+http://sourceforge.net/projects/codeblocks/files/Binaries/17.12/Windows/codeblocks-17.12mingw-setup.exe
+
+Installer (installation par défaut)
+
+Télécharger le package Allegro :
+http://www.ece.fr/~fercoq/allegro/distribution/allegro_4_4_install.zip
+
+Lire la notice et suivre les étapes
+http://www.ece.fr/~fercoq/allegro/distribution/readme.txt
+
+Ouvrir les fichiers de projets .cbp après avoir dézippé la présente archive.
+
+Indiquer à CodeBlocks qu'on est C++11 : 
+Menu déroulant Settings -> Compiler... dans Compiler settings
+Cocher "Have g++ follow the C++11 ..." 
+
+IMPORTANT : il semble que la dernière installation de CodeBlocks à un bug de 
+paramétrage du debugger, vérifier que dans Settings -> Debugger... 
+Default voir Executable path: vous devez avoir gdb32.exe à la fin et non pas gdb.exe
+
+Finalement bien faire Rebuild des projets (Ctrl + F11 ou menu Build -> Rebuild)
+
+
+
+Ca ne marche toujours pas ???
+==============================
+
+N'ENVOYER UN MAIL POUR SIGNALER DES PROBLEMES D'INSTALLATION QU'APRES AVOIR 
+FAIT LES MANIPS CI DESSUS, ET EN COPIANT-COLLANT DANS LE MAIL LE CONTENU COMPLET 
+DE Build log  ET  Build messages  (Logs & others sous la fenêtre principal de CodeBlocks)
+SUITE A UN REBUILD
+
+rfercoq@edu.ece.fr
+copie à 
+jean-pierre.segado@ece.fr
