@@ -1,5 +1,6 @@
 #include "graph.h"
-
+#include <fstream>
+using namespace std;
 /***************************************************
                     VERTEX
 ****************************************************/
@@ -245,3 +246,71 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
     m_edges[idx] = Edge(weight, ei);
 }
 
+void Graph::lireFichier(std::string nomFichier)
+
+{
+    std::ifstream fichier (nomFichier.c_str(), ios:: in); /// ouverture du fichier
+    if(fichier)
+    {
+        std::string nom;
+        fichier>>m_ordre;
+        allouer_mat(m_ordre);
+        for(int l=0; l<m_ordre; l++)        ///Remplissage de la matrice
+        {
+            fichier>> nom;
+            m_matrice2.push_back(nom);
+        }
+
+
+        for(int i=0; i< m_ordre; i++)
+        {
+            for(int j=0; j<m_ordre; j++)
+            {
+                fichier>>m_matrice1[i][j];
+            }
+        }
+
+    fichier.close();
+    }
+
+ else
+    cerr <<"Impossible d'ouvrir le fichier"<< endl;
+
+}
+
+
+
+
+
+void Graph::allouer_mat(int ordre)
+{
+    m_matrice1=new int*[ordre];           ///Création matrice en fonction de l'ordre.
+
+    for(int i=0;i<ordre;i++)
+    {
+        m_matrice1[i]=new int[ordre];
+    }
+    for (int j=0;j<ordre;j++)             ///Initialisation de la matrice.
+    {
+        for (int l=0 ;l<ordre; l++)
+        {
+            m_matrice1[j][l]=0;
+        }
+    }
+}
+
+
+void Graph::afficher()
+{
+    for(int i=0; i<m_ordre; i++)
+    {
+        for(int j=0; j<m_ordre; j++)
+        {
+            if(m_matrice1[i][j]==1)
+            {
+                cout<<m_matrice2[i]<< " "<< " mange "<< m_matrice2[j]<<" "<<endl;
+            }
+        }
+    }
+
+}
