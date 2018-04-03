@@ -308,6 +308,14 @@ class Graph
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+        int m_ordre;
+        int ** m_matrice1;
+        std::vector<std::string> m_matrice2;
+
+        ///Méthodes
+        void lireFichier(std::string nomFichier);
+        void allouer_mat(int ordre);
+        void afficher();
 };
 
 
