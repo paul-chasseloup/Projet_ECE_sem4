@@ -308,7 +308,10 @@ class Graph
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+        void menu();
+
 };
+
 
 
 #endif // GRAPH_H_INCLUDED

@@ -172,9 +172,10 @@ void init()
     jpgalleg_init();
 
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(MODE_GRAPHIQUE,LARGEURECRAN,HAUTEURECRAN,0,0)!=0)
+      if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
     {
-        if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+        allegro_message("prb gfx mode first");
+        if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1024,768,0,0)!=0)
         {
             allegro_message("prb gfx mode");
             allegro_exit();
@@ -269,6 +270,7 @@ void thick_line(BITMAP *bmp, int x1, int y1, int x2, int y2, int thickness, int 
         for (int i=1-thickness; i<thickness; ++i)
             line(bmp, x1+i, y1, x2+i, y2, color);
 }
+
 
 
 } /// FIN DE NAMESPACE GRMAN

@@ -1,4 +1,7 @@
 #include "graph.h"
+#include <allegro.h>
+#include <time.h>
+
 
 /***************************************************
                     VERTEX
@@ -14,7 +17,7 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
 
     // Le slider de réglage de valeur
     m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_value.set_dim(20,80);
     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
 
@@ -92,7 +95,7 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 
     // Le slider de réglage de valeur
     m_box_edge.add_child( m_slider_weight );
-    m_slider_weight.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_weight.set_dim(16,40);
     m_slider_weight.set_gravity_y(grman::GravityY::Up);
 
@@ -245,3 +248,82 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
     m_edges[idx] = Edge(weight, ei);
 }
 
+void Graph::menu()
+{
+    BITMAP *page2=NULL,*selec0=NULL,*selec1=NULL,*selec2=NULL,*selec3=NULL,*selec4=NULL;
+    page2=create_bitmap(1228,748);
+    selec0=load_bitmap("menu 0.bmp",NULL);
+    if(selec0 == NULL)
+        {
+            printf("Erreur de chargement menu 0.bmp");
+            exit(0);
+        }
+    selec1=load_bitmap("menu 1.bmp",NULL);
+    if(selec1 == NULL)
+        {
+            printf("Erreur de chargement menu 1.bmp");
+            exit(0);
+        }
+    selec2=load_bitmap("menu 2.bmp",NULL);
+    if(selec2 == NULL)
+        {
+            printf("Erreur de chargement menu 2.bmp");
+            exit(0);
+        }
+    selec3=load_bitmap("menu 3.bmp",NULL);
+    if(selec3 == NULL)
+        {
+            printf("Erreur de chargement menu 3.bmp");
+            exit(0);
+        }
+    selec4=load_bitmap("menu 4.bmp",NULL);
+    if(selec4 == NULL)
+        {
+            printf("Erreur de chargement menu 4.bmp");
+            exit(0);
+        }
+
+    int selec=0;
+    while (selec!=4||!mouse_b&1)
+    {
+        if (25<=mouse_x && mouse_x<=305 && 420<=mouse_y && mouse_y<=460)
+        {
+            selec=1;
+            draw_sprite(page2,selec1,0,0);
+        }
+        else if (25<=mouse_x && mouse_x<=305 && 461<=mouse_y && mouse_y<=505)
+        {
+            selec=2;
+            draw_sprite(page2,selec2,0,0);
+        }
+        else if (25<=mouse_x && mouse_x<=305 && 506<=mouse_y && mouse_y<=545)
+        {
+            selec=3;
+            draw_sprite(page2,selec3,0,0);
+        }
+        else if (25<=mouse_x && mouse_x<=305 && 546<=mouse_y && mouse_y<=583)
+        {
+            selec=4;
+            draw_sprite(page2,selec4,0,0);
+        }
+        else
+        {
+            selec=0;
+            draw_sprite(page2,selec0,0,0);
+        }
+
+        draw_sprite(screen,page2,0,0);
+        rest(20);
+        clear_bitmap(page2);
+
+        /// ici en fonction de la selection, on choisis quel graphe faire.
+        /*if (mouse_b&1)
+        {
+            switch (selec)
+            {
+            case 1:
+
+            }
+        }*/
+    }
+}
