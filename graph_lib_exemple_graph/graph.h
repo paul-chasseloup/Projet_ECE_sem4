@@ -235,6 +235,9 @@ class Edge
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        int get_from() {return m_from;}
+        int get_to() {return m_to;}
 };
 
 
@@ -314,6 +317,9 @@ class Graph
 
         ///Méthodes
         void lireFichier(std::string nomFichier);
+        void Creation(const std::string& nom_du_fichier);
+        void save_pic(const std::string& nom_du_fichier);
+        void back_pic(const std::string& nom_du_fichier);
         void allouer_mat(int ordre);
         void afficher();
 };

@@ -7,13 +7,18 @@ int main()
 {
     /// A appeler en 1er avant d'instancier des objets graphiques etc...
     grman::init();
-
+    Graph mat1;
+     std::string fichier;
+     //std::string fichier_sauvegarde="test.txt";
+    std::string nom ="Homme";
+    std::string nom1 ="Rongeur";
     /// Le nom du répertoire où se trouvent les images à charger
     grman::set_pictures_path("pics");
 
     /// Un exemple de graphe
-    Graph g;
-    g.make_example();
+   //Graph g;
+    //mat1.make_example();
+    mat1.back_pic("test.txt");
 
 
     /// Vous gardez la main sur la "boucle de jeu"
@@ -21,21 +26,25 @@ int main()
     while ( !key[KEY_ESC] )
     {
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
-        g.update();
+        mat1.update();
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
+
     }
 
     grman::fermer_allegro();
-    Graph mat1;
-    std::string fichier;
-    std::cout<<"Entree le nom du fichier : Graphe1.txt"<<std::endl;
-    std::cin>>fichier;
-    std::cout<<std::endl;
+    mat1.save_pic("test.txt");
+
+
+
+    // std::cout<<"Entree le nom du fichier : Graphe1.txt"<<std::endl;
+    // std::cin>>fichier;
+    // std::cout<<std::endl;
     ///Appel des sous programmes
-    mat1.lireFichier(fichier);
-    mat1.afficher();
+    //mat1.lireFichier(fichier);
+    //mat1.afficher();
+
 
     return 0;
 }
