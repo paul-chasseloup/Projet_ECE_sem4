@@ -286,22 +286,22 @@ void Graph::menu()
     int selec=0;
     while (selec!=4||!mouse_b&1)
     {
-        if (25<=mouse_x && mouse_x<=305 && 420<=mouse_y && mouse_y<=460)
+        if (20<=mouse_x && mouse_x<=310 && 494<=mouse_y && mouse_y<=546)
         {
             selec=1;
             draw_sprite(page2,selec1,0,0);
         }
-        else if (25<=mouse_x && mouse_x<=305 && 461<=mouse_y && mouse_y<=505)
+        else if (20<=mouse_x && mouse_x<=310 && 547<=mouse_y && mouse_y<=593)
         {
             selec=2;
             draw_sprite(page2,selec2,0,0);
         }
-        else if (25<=mouse_x && mouse_x<=305 && 506<=mouse_y && mouse_y<=545)
+        else if (20<=mouse_x && mouse_x<=310 && 594<=mouse_y && mouse_y<=645)
         {
             selec=3;
             draw_sprite(page2,selec3,0,0);
         }
-        else if (25<=mouse_x && mouse_x<=305 && 546<=mouse_y && mouse_y<=583)
+        else if (20<=mouse_x && mouse_x<=310 && 646<=mouse_y && mouse_y<=696)
         {
             selec=4;
             draw_sprite(page2,selec4,0,0);
