@@ -39,15 +39,19 @@
 1522636920 source:c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\grman\widget.cpp
 	"widget.h"
 
-1522773693 source:c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\main.cpp
+1522854217 source:c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
 
-1522773693 c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.h
+1522853657 c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>
 	<memory>
 	"grman/grman.h"
+
+1522853678 source:c:\users\coline\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<fstream>
 

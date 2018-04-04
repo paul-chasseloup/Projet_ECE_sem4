@@ -165,12 +165,12 @@ void Graph::make_example()
 
     /// Les sommets doivent être définis avant les arcs
     // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
-    add_interfaced_vertex(0, 30.0, 200, 100, "clown1.jpg");
-    add_interfaced_vertex(1, 60.0, 400, 100, "clown2.jpg");
-    add_interfaced_vertex(2,  50.0, 200, 300, "clown3.jpg");
-    add_interfaced_vertex(3,  0.0, 400, 300, "clown4.jpg");
+    add_interfaced_vertex(0, 30.0, 200, 100, "buse.jpg");
+    add_interfaced_vertex(1, 60.0, 400, 100, "voiture.jpg");
+    add_interfaced_vertex(2,  50.0, 200, 300, "rongeur.jpg");
+    add_interfaced_vertex(3,  0.0, 400, 300, "serpent.jpg");
     add_interfaced_vertex(4,  100.0, 600, 300, "clown5.jpg");
-    add_interfaced_vertex(5,  0.0, 100, 500, "bad_clowns_xx3xx.jpg", 0);
+    add_interfaced_vertex(5,  0.0, 100, 500, "herbe.jpg", 0);
     add_interfaced_vertex(6,  0.0, 300, 500, "bad_clowns_xx3xx.jpg", 1);
     add_interfaced_vertex(7,  0.0, 500, 500, "bad_clowns_xx3xx.jpg", 2);
 
@@ -249,24 +249,33 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
 void Graph::lireFichier(std::string nomFichier)
 
 {
+    std::string nom;
+    int indice=0;
+    int poids,x,y;
+
     std::ifstream fichier (nomFichier.c_str(), ios:: in); /// ouverture du fichier
     if(fichier)
     {
-        std::string nom;
-        fichier>>m_ordre;
+        m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
+        fichier>>m_ordre>>m_arete;
         allouer_mat(m_ordre);
         for(int l=0; l<m_ordre; l++)        ///Remplissage de la matrice
         {
-            fichier>> nom;
-            m_matrice2.push_back(nom);
+            fichier>> indice>>poids>>x>>y>>nom;
+            add_interfaced_vertex(indice,poids,x,y,nom);
         }
-
+        int k=0;
 
         for(int i=0; i< m_ordre; i++)
         {
             for(int j=0; j<m_ordre; j++)
             {
                 fichier>>m_matrice1[i][j];
+                if(m_matrice1[i][j]!=0)
+                {
+                    add_interfaced_edge(k,i,j,m_matrice1[i][j]);
+                    k++;
+                }
             }
         }
 
@@ -277,9 +286,6 @@ void Graph::lireFichier(std::string nomFichier)
     cerr <<"Impossible d'ouvrir le fichier"<< endl;
 
 }
-
-
-
 
 
 void Graph::allouer_mat(int ordre)
@@ -300,17 +306,4 @@ void Graph::allouer_mat(int ordre)
 }
 
 
-void Graph::afficher()
-{
-    for(int i=0; i<m_ordre; i++)
-    {
-        for(int j=0; j<m_ordre; j++)
-        {
-            if(m_matrice1[i][j]==1)
-            {
-                cout<<m_matrice2[i]<< " "<< " mange "<< m_matrice2[j]<<" "<<endl;
-            }
-        }
-    }
 
-}

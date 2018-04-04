@@ -84,8 +84,8 @@
 
 class VertexInterface
 {
-    // Les (methodes des) classes amies pourront accéder
-    // directement aux attributs (y compris privés)
+    /// Les (methodes des) classes amies pourront accéder
+    /// directement aux attributs (y compris privés)
     friend class Vertex;
     friend class EdgeInterface;
     friend class Graph;
@@ -96,7 +96,7 @@ class VertexInterface
         /// ici un widget pour qu'il apparaisse, il faut aussi le mettre en place et
         /// le paramétrer ( voir l'implémentation du constructeur dans le .cpp )
 
-        // La boite qui contient toute l'interface d'un sommet
+        /// La boite qui contient toute l'interface d'un sommet
         grman::WidgetBox m_top_box;
 
         // Un slider de visualisation/modification de la valeur du sommet
@@ -144,9 +144,9 @@ class Vertex
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
 
-        // Docu shared_ptr : https://msdn.microsoft.com/fr-fr/library/hh279669.aspx
-        // La ligne précédente est en gros équivalent à la ligne suivante :
-        // VertexInterface * m_interface = nullptr;
+        /// Docu shared_ptr : https://msdn.microsoft.com/fr-fr/library/hh279669.aspx
+        /// La ligne précédente est en gros équivalent à la ligne suivante :
+        /// VertexInterface * m_interface = nullptr;
 
 
     public:
@@ -309,8 +309,8 @@ class Graph
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
         int m_ordre;
+        int m_arete;
         int ** m_matrice1;
-        std::vector<std::string> m_matrice2;
 
         ///Méthodes
         void lireFichier(std::string nomFichier);
