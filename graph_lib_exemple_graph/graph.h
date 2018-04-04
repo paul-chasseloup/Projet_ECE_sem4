@@ -235,9 +235,6 @@ class Edge
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
-
-        int get_from() {return m_from;}
-        int get_to() {return m_to;}
 };
 
 
@@ -292,6 +289,7 @@ class Graph
         std::shared_ptr<GraphInterface> m_interface = nullptr;
 
 
+
     public:
 
         /// Les constructeurs sont à compléter selon vos besoin...
@@ -307,22 +305,20 @@ class Graph
         /// Cette méthode est à enlever et remplacer par un système
         /// de chargement de fichiers par exemple.
         void make_example();
-
-
-        /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-        void update();
-        int m_ordre;
-        int ** m_matrice1;
-        std::vector<std::string> m_matrice2;
-
-        ///Méthodes
-        void lireFichier(std::string nomFichier);
+        void allouer_mat(int ordre);
         void Creation(const std::string& nom_du_fichier);
         void save_pic(const std::string& nom_du_fichier);
         void back_pic(const std::string& nom_du_fichier);
-        void allouer_mat(int ordre);
-        void afficher();
+        void lireFichier(std::string nomFichier);
+        int m_ordre;
+        int m_arete;
+         int ** m_matrice1;
+        /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
+        void update();
+        void menu();
+
 };
+
 
 
 #endif // GRAPH_H_INCLUDED

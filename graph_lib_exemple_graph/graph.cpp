@@ -1,6 +1,9 @@
 #include "graph.h"
+#include <allegro.h>
+#include <time.h>
 #include <fstream>
-using namespace std;
+
+
 /***************************************************
                     VERTEX
 ****************************************************/
@@ -15,7 +18,7 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
 
     // Le slider de réglage de valeur
     m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_value.set_dim(20,80);
     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
 
@@ -93,7 +96,7 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 
     // Le slider de réglage de valeur
     m_box_edge.add_child( m_slider_weight );
-    m_slider_weight.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_weight.set_dim(16,40);
     m_slider_weight.set_gravity_y(grman::GravityY::Up);
 
@@ -186,7 +189,6 @@ void Graph::make_example()
     add_interfaced_edge(7, 2, 0, 100.0);
     add_interfaced_edge(8, 5, 2, 20.0);
     add_interfaced_edge(9, 3, 7, 80.0);
-
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
@@ -252,75 +254,86 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
     m_vertices[id_vert2].m_in.push_back(idx);
 }
 
-void Graph::lireFichier(std::string nomFichier)
-
+void Graph::menu()
 {
-    std::ifstream fichier (nomFichier.c_str(), ios:: in); /// ouverture du fichier
-    if(fichier)
-    {
-        std::string nom;
-        fichier>>m_ordre;
-        allouer_mat(m_ordre);
-        for(int l=0; l<m_ordre; l++)        ///Remplissage de la matrice
+    BITMAP *page2=NULL,*selec0=NULL,*selec1=NULL,*selec2=NULL,*selec3=NULL,*selec4=NULL;
+    page2=create_bitmap(1228,748);
+    selec0=load_bitmap("menu 0.bmp",NULL);
+    if(selec0 == NULL)
         {
-            fichier>> nom;
-            m_matrice2.push_back(nom);
+            printf("Erreur de chargement menu 0.bmp");
+            exit(0);
+        }
+    selec1=load_bitmap("menu 1.bmp",NULL);
+    if(selec1 == NULL)
+        {
+            printf("Erreur de chargement menu 1.bmp");
+            exit(0);
+        }
+    selec2=load_bitmap("menu 2.bmp",NULL);
+    if(selec2 == NULL)
+        {
+            printf("Erreur de chargement menu 2.bmp");
+            exit(0);
+        }
+    selec3=load_bitmap("menu 3.bmp",NULL);
+    if(selec3 == NULL)
+        {
+            printf("Erreur de chargement menu 3.bmp");
+            exit(0);
+        }
+    selec4=load_bitmap("menu 4.bmp",NULL);
+    if(selec4 == NULL)
+        {
+            printf("Erreur de chargement menu 4.bmp");
+            exit(0);
         }
 
-
-        for(int i=0; i< m_ordre; i++)
+    int selec=0;
+    while (selec!=4||!mouse_b&1)
+    {
+        if (20<=mouse_x && mouse_x<=310 && 494<=mouse_y && mouse_y<=546)
         {
-            for(int j=0; j<m_ordre; j++)
+            selec=1;
+            draw_sprite(page2,selec1,0,0);
+        }
+        else if (20<=mouse_x && mouse_x<=310 && 547<=mouse_y && mouse_y<=593)
+        {
+            selec=2;
+            draw_sprite(page2,selec2,0,0);
+        }
+        else if (20<=mouse_x && mouse_x<=310 && 594<=mouse_y && mouse_y<=645)
+        {
+            selec=3;
+            draw_sprite(page2,selec3,0,0);
+        }
+        else if (20<=mouse_x && mouse_x<=310 && 646<=mouse_y && mouse_y<=696)
+        {
+            selec=4;
+            draw_sprite(page2,selec4,0,0);
+        }
+        else
+        {
+            selec=0;
+            draw_sprite(page2,selec0,0,0);
+        }
+
+        draw_sprite(screen,page2,0,0);
+        rest(20);
+        clear_bitmap(page2);
+
+        /// ici en fonction de la selection, on choisis quel graphe faire.
+        /*if (mouse_b&1)
+        {
+            switch (selec)
             {
-                fichier>>m_matrice1[i][j];
+            case 1:
+
             }
-        }
-
-    fichier.close();
-    }
-
- else
-    cerr <<"Impossible d'ouvrir le fichier"<< endl;
-
-}
-
-
-
-
-
-void Graph::allouer_mat(int ordre)
-{
-    m_matrice1=new int*[ordre];           ///Création matrice en fonction de l'ordre.
-
-    for(int i=0;i<ordre;i++)
-    {
-        m_matrice1[i]=new int[ordre];
-    }
-    for (int j=0;j<ordre;j++)             ///Initialisation de la matrice.
-    {
-        for (int l=0 ;l<ordre; l++)
-        {
-            m_matrice1[j][l]=0;
-        }
+        }*/
     }
 }
-
-
-void Graph::afficher()
-{
-    for(int i=0; i<m_ordre; i++)
-    {
-        for(int j=0; j<m_ordre; j++)
-        {
-            if(m_matrice1[i][j]==1)
-            {
-                cout<<m_matrice2[i]<< " "<< " mange "<< m_matrice2[j]<<" "<<endl;
-            }
-        }
-    }
-
-};
-void Graph::Creation(const std::string& nom_du_fichier)
+/*void Graph::Creation(const std::string& nom_du_fichier)
 {
     std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
 	// Déclaration des variables
@@ -363,11 +376,7 @@ void Graph::Creation(const std::string& nom_du_fichier)
     {
         std::cout << "Cannot write " << nom_du_fichier << std::endl;
     }
-};
-/// SAUVEGARDE :
-/// Le principe de ce sous-programme est d'être appelé à la fin de chaque session dans une boucle qui prendra en compte tous les elements
-/// qui constituent la scene en train d'etre jouee.
-
+};*/
 void Graph::save_pic(const std::string& nom_du_fichier)
 {
     std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
@@ -453,4 +462,60 @@ void Graph::back_pic(const std::string& nom_du_fichier)
     {
         std::cout << "Cannot read " << nom_du_fichier << std::endl;
     }
+}
+void Graph::allouer_mat(int ordre)
+{
+    m_matrice1=new int*[ordre];           ///Création matrice en fonction de l'ordre.
+
+    for(int i=0;i<ordre;i++)
+    {
+        m_matrice1[i]=new int[ordre];
+    }
+    for (int j=0;j<ordre;j++)             ///Initialisation de la matrice.
+    {
+        for (int l=0 ;l<ordre; l++)
+        {
+            m_matrice1[j][l]=0;
+        }
+    }
+}
+void Graph::lireFichier(std::string nomFichier)
+
+{
+    std::string nom;
+    int indice=0;
+    int poids,x,y;
+
+    std::ifstream fichier (nomFichier.c_str(), std::ios:: in); /// ouverture du fichier
+    if(fichier)
+    {
+        m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
+        fichier>>m_ordre>>m_arete;
+        allouer_mat(m_ordre);
+        for(int l=0; l<m_ordre; l++)        ///Remplissage de la matrice
+        {
+            fichier>> indice>>poids>>x>>y>>nom;
+            add_interfaced_vertex(indice,poids,x,y,nom);
+        }
+        int k=0;
+
+        for(int i=0; i< m_ordre; i++)
+        {
+            for(int j=0; j<m_ordre; j++)
+            {
+                fichier>>m_matrice1[i][j];
+                if(m_matrice1[i][j]!=0)
+                {
+                    add_interfaced_edge(k,i,j,m_matrice1[i][j]);
+                    k++;
+                }
+            }
+        }
+
+    fichier.close();
+    }
+
+ else
+    std::cerr <<"Impossible d'ouvrir le fichier"<< std::endl;
+
 }
