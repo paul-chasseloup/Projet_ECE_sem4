@@ -1,9 +1,9 @@
 5
-0 30 58 129 voiture.bmp
-1 60 583 29 buse.bmp
-2 50 677 489 serpent.bmp
-3 20 381 522 rongeur.bmp
-4 40 63 508 herbe.bmp
+0 30 742 29 voiture.bmp
+1 60 494 196 buse.bmp
+2 50 650 459 serpent.bmp
+3 20 313 460 rongeur.bmp
+4 40 56 583 herbe.bmp
 5
 0 1 0 1
 1 1 1 2
