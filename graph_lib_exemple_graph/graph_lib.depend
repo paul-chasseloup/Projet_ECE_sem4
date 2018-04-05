@@ -28,7 +28,7 @@
 
 1522857060 c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\grman\grman_couleurs.h
 
-1522857066 c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\grman\widget.h
+1522920004 c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\grman\widget.h
 	"grman.h"
 	<iostream>
 	<string>
@@ -39,22 +39,23 @@
 1522857060 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\grman\widget.cpp
 	"widget.h"
 
-1522857066 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\main.cpp
+1522923821 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
 
-1522857066 c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.h
+1522924053 c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>
 	<memory>
 	"grman/grman.h"
 
-1522857066 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.cpp
+1522924053 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4\graph_lib_exemple_graph\graph.cpp
 	"graph.h"
 	<allegro.h>
 	<time.h>
+	<fstream>
 
 1522868485 source:d:\projet_ece_sem4-paul\projet_ece_sem4-paul\graph_lib_exemple_graph\graph.cpp
 	"graph.h"

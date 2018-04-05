@@ -254,7 +254,7 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
     m_vertices[id_vert2].m_in.push_back(idx);
 }
 
-void Graph::menu()
+Graph Graph::menu(Graph g)
 {
     BITMAP *page2=NULL,*selec0=NULL,*selec1=NULL,*selec2=NULL,*selec3=NULL,*selec4=NULL;
     page2=create_bitmap(1228,748);
@@ -290,7 +290,7 @@ void Graph::menu()
         }
 
     int selec=0;
-    while (selec!=4||!mouse_b&1)
+    while ((selec!=4&&selec!=3&&selec!=2&&selec!=1)||!mouse_b&1)
     {
         if (20<=mouse_x && mouse_x<=310 && 494<=mouse_y && mouse_y<=546)
         {
@@ -323,15 +323,32 @@ void Graph::menu()
         clear_bitmap(page2);
 
         /// ici en fonction de la selection, on choisis quel graphe faire.
-        /*if (mouse_b&1)
+        if (mouse_b&1)
         {
             switch (selec)
             {
             case 1:
+                g.back_pic("Saves1.txt");
+                g.set_num_graph(1);
+                break;
 
+            case 2:
+                g.back_pic("Saves2.txt");
+                g.set_num_graph(2);
+                break;
+
+            case 3:
+                g.back_pic("Saves3.txt");
+                g.set_num_graph(3);
+                break;
+
+            default:
+                break;
             }
-        }*/
+        }
     }
+
+return g;
 }
 /*void Graph::Creation(const std::string& nom_du_fichier)
 {
@@ -518,4 +535,32 @@ void Graph::lireFichier(std::string nomFichier)
  else
     std::cerr <<"Impossible d'ouvrir le fichier"<< std::endl;
 
+}
+
+void Graph::sauvegarde(Graph g)
+{
+    int nb;
+    nb = g.get_num_graph();
+    switch (nb)
+    {
+    case 1:
+        g.save_pic("Saves1.txt");
+        break;
+    case 2:
+        g.save_pic("Saves2.txt");
+        break;
+    case 3:
+        g.save_pic("Saves3.txt");
+        break;
+    }
+}
+
+int Graph::get_num_graph()
+{
+    return m_num_graph;
+}
+
+void Graph::set_num_graph(int num_graph)
+{
+    m_num_graph=num_graph;
 }

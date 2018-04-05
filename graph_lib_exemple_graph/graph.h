@@ -288,6 +288,7 @@ class Graph
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<GraphInterface> m_interface = nullptr;
 
+        int m_num_graph;
 
 
     public:
@@ -296,6 +297,9 @@ class Graph
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graph (GraphInterface *interface=nullptr) :
             m_interface(interface)  {  }
+
+        int get_num_graph();
+        void set_num_graph(int num_graph);
 
         void add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
         void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
@@ -315,7 +319,8 @@ class Graph
          int ** m_matrice1;
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
-        void menu();
+        Graph menu(Graph g);
+        void sauvegarde(Graph g);
 
 };
 
