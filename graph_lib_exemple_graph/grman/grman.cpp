@@ -22,8 +22,8 @@ namespace grman
 //#define MODE_GRAPHIQUE GFX_AUTODETECT_FULLSCREEN
 
 // Nombre de pixels horizontalement et verticalement
-#define LARGEURECRAN 1024
-#define HAUTEURECRAN 768
+#define LARGEURECRAN 1200
+#define HAUTEURECRAN 710
 
 // Couleur initiale :
 #define PAGE_COULEUR_INIT BLANC
@@ -155,7 +155,8 @@ void mettre_a_jour()
 
 void init()
 {
-    if (page) return;
+    if (page)
+        return;
 
     srand(time(NULL));
 
@@ -172,8 +173,9 @@ void init()
     jpgalleg_init();
 
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(MODE_GRAPHIQUE,LARGEURECRAN,HAUTEURECRAN,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,710,0,0)!=0)
     {
+        allegro_message("prb gfx mode first");
         if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
         {
             allegro_message("prb gfx mode");
@@ -199,7 +201,8 @@ void init()
 
 void fermer_allegro()
 {
-    if (!page) return;
+    if (!page)
+        return;
     destroy_bitmap(page);
     page=NULL;
     allegro_exit();
@@ -207,13 +210,15 @@ void fermer_allegro()
 
 void buf_effacer_page()
 {
-    if (!page) return;
+    if (!page)
+        return;
     clear_to_color(page, page_color);
 }
 
 void buf_afficher_page()
 {
-    if (!page) return;
+    if (!page)
+        return;
     acquire_screen();
     blit(page, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
     release_screen();
@@ -269,6 +274,7 @@ void thick_line(BITMAP *bmp, int x1, int y1, int x2, int y2, int thickness, int 
         for (int i=1-thickness; i<thickness; ++i)
             line(bmp, x1+i, y1, x2+i, y2, color);
 }
+
 
 
 } /// FIN DE NAMESPACE GRMAN
