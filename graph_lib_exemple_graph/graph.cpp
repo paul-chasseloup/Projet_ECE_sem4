@@ -8,7 +8,7 @@
                     VERTEX
 ****************************************************/
 
-/// Le constructeur met en place les éléments de l'interface
+/// Le constructeur met en place les Ã©lÃ©ments de l'interface
 VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, int pic_idx)
 {
     // La boite englobante
@@ -16,9 +16,9 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
     m_top_box.set_dim(130, 100);
     m_top_box.set_moveable();
 
-    // Le slider de réglage de valeur
+    // Le slider de rÃ©glage de valeur
     m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, Ã  adapter...
     m_slider_value.set_dim(20,80);
     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
 
@@ -46,27 +46,27 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
 }
 
 
-/// Gestion du Vertex avant l'appel à l'interface
+/// Gestion du Vertex avant l'appel Ã  l'interface
 void Vertex::pre_update()
 {
     if (!m_interface)
         return;
 
-    /// Copier la valeur locale de la donnée m_value vers le slider associé
+    /// Copier la valeur locale de la donnÃ©e m_value vers le slider associÃ©
     m_interface->m_slider_value.set_value(m_value);
 
-    /// Copier la valeur locale de la donnée m_value vers le label sous le slider
+    /// Copier la valeur locale de la donnÃ©e m_value vers le label sous le slider
     m_interface->m_label_value.set_message( std::to_string( (int)m_value) );
 }
 
 
-/// Gestion du Vertex après l'appel à l'interface
+/// Gestion du Vertex aprÃ¨s l'appel Ã  l'interface
 void Vertex::post_update()
 {
     if (!m_interface)
         return;
 
-    /// Reprendre la valeur du slider dans la donnée m_value locale
+    /// Reprendre la valeur du slider dans la donnÃ©e m_value locale
     m_value = m_interface->m_slider_value.get_value();
 }
 
@@ -76,7 +76,7 @@ void Vertex::post_update()
                     EDGE
 ****************************************************/
 
-/// Le constructeur met en place les éléments de l'interface
+/// Le constructeur met en place les Ã©lÃ©ments de l'interface
 EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 {
     // Le WidgetEdge de l'interface de l'arc
@@ -89,14 +89,14 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
     m_top_edge.attach_to(to.m_interface->m_top_box);
     m_top_edge.reset_arrow_with_bullet();
 
-    // Une boite pour englober les widgets de réglage associés
+    // Une boite pour englober les widgets de rÃ©glage associÃ©s
     m_top_edge.add_child(m_box_edge);
     m_box_edge.set_dim(24,60);
     m_box_edge.set_bg_color(BLANCBLEU);
 
-    // Le slider de réglage de valeur
+    // Le slider de rÃ©glage de valeur
     m_box_edge.add_child( m_slider_weight );
-    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
+    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, Ã  adapter...
     m_slider_weight.set_dim(16,40);
     m_slider_weight.set_gravity_y(grman::GravityY::Up);
 
@@ -107,26 +107,26 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 }
 
 
-/// Gestion du Edge avant l'appel à l'interface
+/// Gestion du Edge avant l'appel Ã  l'interface
 void Edge::pre_update()
 {
     if (!m_interface)
         return;
 
-    /// Copier la valeur locale de la donnée m_weight vers le slider associé
+    /// Copier la valeur locale de la donnÃ©e m_weight vers le slider associÃ©
     m_interface->m_slider_weight.set_value(m_weight);
 
-    /// Copier la valeur locale de la donnée m_weight vers le label sous le slider
+    /// Copier la valeur locale de la donnÃ©e m_weight vers le label sous le slider
     m_interface->m_label_weight.set_message( std::to_string( (int)m_weight ) );
 }
 
-/// Gestion du Edge après l'appel à l'interface
+/// Gestion du Edge aprÃ¨s l'appel Ã  l'interface
 void Edge::post_update()
 {
     if (!m_interface)
         return;
 
-    /// Reprendre la valeur du slider dans la donnée m_weight locale
+    /// Reprendre la valeur du slider dans la donnÃ©e m_weight locale
     m_weight = m_interface->m_slider_weight.get_value();
 }
 
@@ -136,8 +136,8 @@ void Edge::post_update()
                     GRAPH
 ****************************************************/
 
-/// Ici le constructeur se contente de préparer un cadre d'accueil des
-/// éléments qui seront ensuite ajoutés lors de la mise ne place du Graphe
+/// Ici le constructeur se contente de prÃ©parer un cadre d'accueil des
+/// Ã©lÃ©ments qui seront ensuite ajoutÃ©s lors de la mise ne place du Graphe
 GraphInterface::GraphInterface(int x, int y, int w, int h)
 {
     m_top_box.set_dim(1000,740);
@@ -161,19 +161,19 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_supprimer.set_bg_color(ROUGE);
     m_text_supprimer.set_message("SUPPRIMER");
 
-    m_top_box.add_child(m_ajouter);
-    m_ajouter.add_child(m_text_ajouter);
-    m_ajouter.set_dim(80,40);
-    m_ajouter.set_posx(0);
-    m_ajouter.set_posy(40);
-    m_ajouter.set_bg_color(FUCHSIA);
-    m_text_ajouter.set_message("AJOUTER");
+    m_top_box.add_child(m_ajouter_sommet);
+    m_ajouter_sommet.add_child(m_text_ajouter_sommet);
+    m_ajouter_sommet.set_dim(80,40);
+    m_ajouter_sommet.set_posx(0);
+    m_ajouter_sommet.set_posy(40);
+    m_ajouter_sommet.set_bg_color(FUCHSIA);
+    m_text_ajouter_sommet.set_message("ADD SOMMET");
 
     m_top_box.add_child(m_sauvegarde);
     m_sauvegarde.add_child(m_text_sauvegarde);
     m_sauvegarde.set_dim(80,40);
     m_sauvegarde.set_posx(0);
-    m_sauvegarde.set_posy(80);
+    m_sauvegarde.set_posy(120);
     m_sauvegarde.set_bg_color(BLEUCLAIR);
     m_text_sauvegarde.set_message("SAVE");
 
@@ -181,9 +181,17 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_quitter.add_child(m_text_quitter);
     m_quitter.set_dim(80,40);
     m_quitter.set_posx(0);
-    m_quitter.set_posy(120);
+    m_quitter.set_posy(160);
     m_quitter.set_bg_color(VIOLETCLAIR);
     m_text_quitter.set_message("QUITTER");
+
+    m_top_box.add_child(m_ajouter_arete);
+    m_ajouter_arete.add_child(m_text_ajouter_arete);
+    m_ajouter_arete.set_dim(80,40);
+    m_ajouter_arete.set_posx(0);
+    m_ajouter_arete.set_posy(80);
+    m_ajouter_arete.set_bg_color(ROUGECLAIR);
+    m_text_ajouter_arete.set_message("ADD ARETE");
 }
 
 int GraphInterface::update()
@@ -192,7 +200,7 @@ int GraphInterface::update()
     {
        return 1;
     }
-    if(m_ajouter.clicked())
+    if(m_ajouter_sommet.clicked())
     {
         return 2;
     }
@@ -200,20 +208,28 @@ int GraphInterface::update()
     {
         return 3;
     }
+    if(m_sauvegarde.clicked())
+    {
+        return 4;
+    }
+    if(m_ajouter_arete.clicked())
+    {
+        return 5;
+    }
 
 }
-/// Méthode spéciale qui construit un graphe arbitraire (démo)
-/// Cette méthode est à enlever et remplacer par un système
+/// MÃ©thode spÃ©ciale qui construit un graphe arbitraire (dÃ©mo)
+/// Cette mÃ©thode est Ã  enlever et remplacer par un systÃ¨me
 /// de chargement de fichiers par exemple.
-/// Bien sûr on ne veut pas que vos graphes soient construits
-/// "à la main" dans le code comme ça.
+/// Bien sÃ»r on ne veut pas que vos graphes soient construits
+/// "Ã  la main" dans le code comme Ã§a.
 /*void Graph::make_example()
 {
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
-    // La ligne précédente est en gros équivalente à :
+    // La ligne prÃ©cÃ©dente est en gros Ã©quivalente Ã  :
     // m_interface = new GraphInterface(50, 0, 750, 600);
 
-    /// Les sommets doivent être définis avant les arcs
+    /// Les sommets doivent Ãªtre dÃ©finis avant les arcs
     // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
     add_interfaced_vertex(0, 30.0, 200, 100, "clown1.jpg");
     add_interfaced_vertex(1, 60.0, 400, 100, "clown2.jpg");
@@ -224,7 +240,7 @@ int GraphInterface::update()
     add_interfaced_vertex(6,  0.0, 300, 500, "bad_clowns_xx3xx.jpg", 1);
     add_interfaced_vertex(7,  0.0, 500, 500, "bad_clowns_xx3xx.jpg", 2);
 
-    /// Les arcs doivent être définis entre des sommets qui existent !
+    /// Les arcs doivent Ãªtre dÃ©finis entre des sommets qui existent !
     // AJouter l'arc d'indice 0, allant du sommet 1 au sommet 2 de poids 50 etc...
     add_interfaced_edge(0, 1, 2, 50.0);
     add_interfaced_edge(1, 0, 1, 50.0);
@@ -238,8 +254,8 @@ int GraphInterface::update()
     add_interfaced_edge(9, 3, 7, 80.0);
 }
 */
-/// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-void Graph::update()
+/// La mÃ©thode update Ã  appeler dans la boucle de jeu pour les graphes avec interface
+void Graph::update(Graph g)
 {
     if (!m_interface)
         return;
@@ -264,6 +280,15 @@ void Graph::update()
     {
        supprimer_pic();
     }
+
+    if(a==4)
+    {
+        sauvegarde(g);
+    }
+    if (a==5)
+    {
+        ajouter_edge();
+    }
     m_interface->update();
 
     for (auto &elt : m_vertices)
@@ -274,8 +299,25 @@ void Graph::update()
 
 
 }
-
-/// Aide à l'ajout de sommets interfacés
+void Graph::ajouter_edge()
+{
+    std::string nom;
+    int lien_1, lien_2,poids;
+    std::cout<<"Vous voulez creer un nouvel element " << std::endl;
+    std::cout<<"Veuillez entrer le nom de l'image qui lui est associee: " << std::endl;
+    std::cin>>nom;
+    std::cout<<"Veuillez entrer ses liens : "<< std::endl;
+    std::cout<<"lien 1 : ";
+    std::cin>>lien_1;
+    std::cout<<std::endl;
+    std::cout<<"lien 2 : ";
+    std::cin>>lien_2;
+    std::cout<<std::endl;
+    std::cout<< "poids :";
+    std::cin>>poids;
+    add_interfaced_edge(m_edges.size()+1,lien_1,lien_2,poids);
+}
+/// Aide Ã  l'ajout de sommets interfacÃ©s
 void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name, int pic_idx )
 {
     if ( m_vertices.find(idx)!=m_vertices.end() )
@@ -283,7 +325,7 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
         std::cerr << "Error adding vertex at idx=" << idx << " already used..." << std::endl;
         throw "Error adding vertex";
     }
-    // Création d'une interface de sommet
+    // CrÃ©ation d'une interface de sommet
     VertexInterface *vi = new VertexInterface(idx, x, y, pic_name, pic_idx);
     // Ajout de la top box de l'interface de sommet
     m_interface->m_main_box.add_child(vi->m_top_box);
@@ -291,7 +333,7 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
     m_vertices[idx] = Vertex(value, vi);
 }
 
-/// Aide à l'ajout d'arcs interfacés
+/// Aide Ã  l'ajout d'arcs interfacÃ©s
 void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weight)
 {
     if ( m_edges.find(idx)!=m_edges.end() )
@@ -398,7 +440,20 @@ Graph Graph::menu(Graph g)
             case 2:
                 fichier="Saves2.txt";
                 g.back_pic("Saves2.txt");
+                g.generate_matrice();
                 g.set_num_graph(2);
+                int** valeur;
+
+                std::cout<<"matrice de forte connexite"<<std::endl;
+                valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
+                for (int i=0; i<g.m_ordre; i++)
+                {
+                    for (int j=0;j<g.m_ordre;j++)
+                    {
+                        std::cout<<valeur[i][j]<<" ";
+                    }
+                    std::cout<<std::endl;
+                }
                 break;
 
             case 3:
@@ -415,50 +470,7 @@ Graph Graph::menu(Graph g)
 
 return g;
 }
-/*void Graph::Creation(const std::string& nom_du_fichier)
-{
-    std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
-	// Déclaration des variables
-	// pour la boucle de remplissage
-    int i=0;
-	// pour les données saisies
-    std::string A1,A2;
-    int pos_x, pos_y;
 
-    if(ofs)
-    {
-        // On montre que le fichier est bien ouvert
-        std::cout << "Writing " << nom_du_fichier << " => OK" << std::endl;
-	// On remplit autant qu'on veut
-        while (i!=1)
-        {
-		//Boucle intéractive
-            std::cout << "Premier element : " << std::endl;
-		//On saisit le premier element
-            std::cin >>A1;
-		//On saisit le deuxieme element
-            std::cout << "Deuxieme element : " << std::endl;
-            std::cin >>A2;
-            //Boucle intéractive
-            std::cout << "Pos_x : " << std::endl;
-		//On saisit le premier element
-            std::cin >>pos_x;
-		//On saisit le deuxieme element
-            std::cout << "Pos_y : " << std::endl;
-            std::cin >>pos_y;
-		// On inscrit dans le fichier
-             ofs << A1 << A2 << pos_x << pos_y << std::endl;
-             std::cout << "Appuyez sur 1 pour arreter, sur une autre touche sinon : " << std::endl;
-             std::cin >>i;
-        }
-
-	std::cout << "Ecriture reussie" << std::endl;
-    }
-    else
-    {
-        std::cout << "Cannot write " << nom_du_fichier << std::endl;
-    }
-};*/
 void Graph::save_pic(const std::string& nom_du_fichier)
 {
     std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
@@ -507,7 +519,7 @@ void Graph::save_pic(const std::string& nom_du_fichier)
 
 void Graph::back_pic(const std::string& nom_du_fichier)
 {
-    //déclaration des variables
+    //dÃ©claration des variables
     int a,b,d,y,i;
     double c;
     std::string nom;
@@ -558,8 +570,8 @@ void Graph::ajout_pic()
     std::cin>>lien_1;
     std::cout<< "poids :";
     std::cin>>poids;
-    add_interfaced_vertex(m_vertices.size()+1,0,400,400,nom);
-    add_interfaced_edge(m_edges.size()+1,m_edges.size()+1,lien_1,poids);
+    add_interfaced_vertex(m_vertices.size(),0,400,400,nom);
+    add_interfaced_edge(m_edges.size(),m_vertices.size()-1,lien_1,poids);
 }
 
 void Graph::supprimer_pic()
@@ -578,7 +590,6 @@ void Graph::supprimer_pic()
             if(it1->second.m_interface->m_img.get_pic_name()==nom)
             {
                 vidx=it1->first;
-
             }
 
         }
@@ -601,7 +612,7 @@ void Graph::supprimer_pic()
             it->second; //pointe sur le vertex
             if(it->second.m_interface->m_img.get_pic_name()==nom)
             {
-                m_vertices.erase(it);
+                test_remove_vertex(it->first);
                 break;
 
             }
@@ -609,53 +620,97 @@ void Graph::supprimer_pic()
         }
 }
 
+void Graph::test_remove_vertex(int vidx)
+{
+/// rÃ©fÃ©rence vers le Vertex Ã  enlever
+    Vertex &remve=m_vertices.at(vidx);
+    /// test : on a bien des Ã©lÃ©ments interfacÃ©s
+    if (m_interface && remve.m_interface)
+    {
+        ///enlever le conteneur d'interface m_top_box du vertex de la main_box du graphe
+        m_interface->m_main_box.remove_child( remve.m_interface->m_top_box );
+    }
+    ///On supprime le vertex de la map
+    m_vertices.erase( vidx );
+}
+
 void Graph::test_remove_edge(int eidx)
 {
-/// référence vers le Edge à enlever
+/// rÃ©fÃ©rence vers le Edge Ã  enlever
     Edge &remed=m_edges.at(eidx);
 
     std::cout << "Removing edge " << eidx << " " << remed.m_from << "->" << remed.m_to << " " << remed.m_weight << std::endl;
 
-/// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+/// Tester la cohÃ©rence : nombre d'arc entrants et sortants des sommets 1 et 2
     std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
     std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
     std::cout << m_edges.size() << std::endl;
 
-/// test : on a bien des éléments interfacés
+/// test : on a bien des Ã©lÃ©ments interfacÃ©s
     if (m_interface && remed.m_interface)
     {
-/// Ne pas oublier qu'on a fait ça à l'ajout de l'arc :
+/// Ne pas oublier qu'on a fait Ã§a Ã  l'ajout de l'arc :
         /* EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]); */
         /* m_interface->m_main_box.add_child(ei->m_top_edge); */
         /* m_edges[idx] = Edge(weight, ei); */
-/// Le new EdgeInterface ne nécessite pas de delete car on a un shared_ptr
-/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// Le new EdgeInterface ne nÃ©cessite pas de delete car on a un shared_ptr
+/// Le Edge ne nÃ©cessite pas non plus de delete car on n'a pas fait de new (sÃ©mantique par valeur)
 /// mais il faut bien enlever le conteneur d'interface m_top_edge de l'arc de la main_box du graphe
         m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge );
     }
 
-/// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+/// Il reste encore Ã  virer l'arc supprimÃ© de la liste des entrants et sortants des 2 sommets to et from !
 /// References sur les listes de edges des sommets from et to
     std::vector<int> &vefrom = m_vertices[remed.m_from].m_out;
     std::vector<int> &veto = m_vertices[remed.m_to].m_in;
     vefrom.erase( std::remove( vefrom.begin(), vefrom.end(), eidx ), vefrom.end() );
     veto.erase( std::remove( veto.begin(), veto.end(), eidx ), veto.end() );
 
-/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
-/// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+/// Le Edge ne nÃ©cessite pas non plus de delete car on n'a pas fait de new (sÃ©mantique par valeur)
+/// Il suffit donc de supprimer l'entrÃ©e de la map pour supprimer Ã  la fois l'Edge et le EdgeInterface
 /// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
     m_edges.erase( eidx );
 
-/// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+/// Tester la cohÃ©rence : nombre d'arc entrants et sortants des sommets 1 et 2
     std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
     std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
     std::cout << m_edges.size() << std::endl;
 
 }
 
+
+
+void Graph::generate_matrice()
+{
+    m_ordre=m_vertices.size();
+    allouer_mat(m_ordre);
+    for(int i=0; i< m_ordre; i++)
+    {
+        for(int j=0; j<m_ordre; j++)
+        {
+
+            for (std::map <int, Edge>::iterator it = m_edges.begin(); it != m_edges.end(); it++)
+            {
+                if (it->second.m_from==i&&it->second.m_to==j)
+                {
+                    m_matrice1[i][j]=1;
+                }
+            }
+        }
+    }
+    for(int i=0; i< m_ordre; i++)
+    {
+        for(int j=0; j<m_ordre; j++)
+        {
+            std::cout<<m_matrice1[i][j]<< " " ;
+        }
+        std::cout<<std::endl;
+    }
+}
+
 void Graph::allouer_mat(int ordre)
 {
-    m_matrice1=new int*[ordre];           ///Création matrice en fonction de l'ordre.
+    m_matrice1=new int*[ordre];           ///CrÃ©ation matrice en fonction de l'ordre.
 
     for(int i=0;i<ordre;i++)
     {
@@ -736,4 +791,121 @@ int Graph::get_num_graph()
 void Graph::set_num_graph(int num_graph)
 {
     m_num_graph=num_graph;
+}
+
+int** Graph::toutesComposantesConnexes(int**matrice, int ordre)
+{
+
+    int **tabc;
+    int *marque;
+    int x,y;
+
+    tabc=new int*[ordre];
+    for(int i=0;i<ordre;i++)
+    {
+        tabc[i]=new int[ordre];
+    }
+    marque=new int[ordre];
+
+    for(int i=0; i<ordre; i++)
+    {
+        for(int j=0;j<ordre;j++)
+        {
+            tabc[i][j]=0;
+        }
+        marque[i]=0;
+    }
+
+    for(x=0;x<ordre;x++)
+    {
+        if(!marque[x])
+        {
+            tabc[x]=uneComposanteFortementConnexe(matrice,ordre,x); ///s?
+            marque[x]=1;
+            for(y=0;y<ordre;y++)
+            {
+                if(tabc[x][y] && !marque[y])
+                {
+                    marque[y]=1;
+                }
+            }
+
+        }
+    }
+    return tabc;
+}
+
+int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
+{
+//Variables locales
+    int *c1, *c2 ; // composantes connexes directes partant de s et indirectes arrivant vers s
+    int *c ; // composante fortement connexe = c1 ïƒ‡ c2 Ã  retourner
+    int *marques ; // tableau dynamique indiquant si les sommets sont marquÃ©s ou non
+    int x, y ; // numÃ©ros de sommets intermÃ©diaires des composantes connexes
+    int ajoute = 1 ; // boolÃ©en indiquant si une nouvelle composante connexe est ajoutÃ© e
+// Allouer les tableaux dynamiques c1, c2, c et marques de taille Â« ordre Â»
+    c1=new int[ordre];
+    c2=new int[ordre];
+    c=new int[ordre];
+    marques=new int[ordre];
+
+// Initialiser les valeurs de ces tableaux Ã  0
+    for(int i=0; i<ordre; i++)
+    {
+        c1[i]=0;
+        c2[i]=0;
+        c[i]=0;
+        marques[i]=0;
+    }
+// Rendre le sommet s connexe
+    c1[s] = 1 ;
+    c2[s] = 1 ;
+// Recherche des composantes connexes partant de s Ã  ajouter dans c1 :
+    while (ajoute==1)
+    {
+        ajoute = 0;
+// Ã  chaque tour, recherche dâ€™une nouvelle composante connexe Ã  ajouter
+// Pour tous les sommets x non marquÃ©s et connectÃ©s en partant de s
+// Marquer chaque sommet x et connecter les sommets non marquÃ©s y adjacents Ã  x
+        for (x=0 ; x<ordre ; x++)
+        {
+            if (!marques[x] && c1[x])
+            {
+                marques[x] = 1 ;
+                for (y=0 ; y<ordre ; y++)
+                {
+                    if (matrice[x][y] && !marques[y])
+                    {
+                        c1[y] = 1 ;
+                        ajoute = 1 ; // nouvelle composante connexe ajoutÃ©e
+                    }
+                }
+            }
+        }
+        ajoute=1;
+        for(int i=0;i<ordre;i++)
+            marques[i]=0;
+// Recherche des composantes connexes arrivant Ã  s Ã  ajouter dans c2 :
+        for (x=0 ; x<ordre ; x++)
+        {
+            if (!marques[x] && c2[x])
+            {
+                marques[x] = 1 ;
+                for (y=0 ; y<ordre ; y++)
+                {
+                    if (matrice[y][x] && !marques[y])
+                    {
+                        c2[y] = 1 ;
+                        ajoute = 1 ; // nouvelle composante connexe ajoutÃ©e
+                    }
+                }
+            }
+        }
+// Composante fortement connexe c = intersection de c1 et c2
+        for (x=0 ; x<ordre ; x++)
+            c[x] = c1[x] & c2[x] ;
+// Retourner la composante fortement connexe c
+        return c ;
+
+    }
 }

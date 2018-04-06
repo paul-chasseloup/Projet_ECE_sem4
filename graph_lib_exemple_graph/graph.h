@@ -264,14 +264,16 @@ class GraphInterface
         grman::WidgetBox m_tool_box;
 
             // Sera la boite à boutons en haut à droite
-        grman::WidgetButton m_ajouter;       // Sera le bouton avec le texte NEW
+        grman::WidgetButton m_ajouter_sommet;       // Sera le bouton avec le texte NEW
         grman::WidgetButton m_supprimer;       // Sera le bouton avec le texte NEW
-        grman::WidgetText m_text_ajouter;
+        grman::WidgetText m_text_ajouter_sommet;
         grman::WidgetText m_text_supprimer;
         grman::WidgetButton m_sauvegarde;
         grman::WidgetText m_text_sauvegarde;
         grman::WidgetButton m_quitter;
         grman::WidgetText m_text_quitter;
+        grman::WidgetButton m_ajouter_arete;
+        grman::WidgetText m_text_ajouter_arete;
 
 
         // A compléter éventuellement par des widgets de décoration ou
@@ -328,14 +330,19 @@ class Graph
         void back_pic(const std::string& nom_du_fichier);
         void lireFichier(std::string nomFichier);
         void supprimer_pic();
+        void ajouter_edge();
+        void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
+        void generate_matrice();
+        int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
+        int** toutesComposantesConnexes(int**matrice, int ordre);
         void ajout_pic();
         int m_ordre;
         int m_arete;
         int ** m_matrice1;
         std::string fichier;
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-        void update();
+        void update(Graph g);
         Graph menu(Graph g);
         void sauvegarde(Graph g);
 
