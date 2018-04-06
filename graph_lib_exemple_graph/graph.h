@@ -337,6 +337,7 @@ class Graph
         void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
         void generate_matrice();
+        void Temporalite();
         int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
         int** toutesComposantesConnexes(int**matrice, int ordre);
         void afficher_connex(Graph g);

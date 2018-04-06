@@ -2,8 +2,7 @@
 #include <allegro.h>
 #include <time.h>
 #include <fstream>
-
-
+#include <map>
 /***************************************************
                     VERTEX
 ****************************************************/
@@ -245,6 +244,7 @@ void Graph::update(Graph g)
     if(a==2)
     {
         ajout_pic();
+
     }
     if(a==3)
     {
@@ -290,8 +290,6 @@ void Graph::ajouter_edge()
     std::string nom;
     int lien_1, lien_2,poids;
     std::cout<<"Vous voulez creer un nouvel element " << std::endl;
-    std::cout<<"Veuillez entrer le nom de l'image qui lui est associee: " << std::endl;
-    std::cin>>nom;
     std::cout<<"Veuillez entrer ses liens : "<< std::endl;
     std::cout<<"lien 1 : ";
     std::cin>>lien_1;
@@ -306,10 +304,9 @@ void Graph::ajouter_edge()
 /// Aide à l'ajout de sommets interfacés
 void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name, int pic_idx )
 {
-    if ( m_vertices.find(idx)!=m_vertices.end() )
+    while ( m_vertices.find(idx)!=m_vertices.end() )
     {
-        std::cerr << "Error adding vertex at idx=" << idx << " already used..." << std::endl;
-        throw "Error adding vertex";
+        idx++;
     }
     // Création d'une interface de sommet
     VertexInterface *vi = new VertexInterface(idx, x, y, pic_name, pic_idx);
@@ -317,15 +314,15 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
     m_interface->m_main_box.add_child(vi->m_top_box);
     // On peut ajouter directement des vertices dans la map avec la notation crochet :
     m_vertices[idx] = Vertex(value, vi);
+
 }
 
 /// Aide à l'ajout d'arcs interfacés
 void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weight)
 {
-    if ( m_edges.find(idx)!=m_edges.end() )
+    while ( m_edges.find(idx)!=m_edges.end() )
     {
-        std::cerr << "Error adding edge at idx=" << idx << " already used..." << std::endl;
-        throw "Error adding edge";
+        idx++;
     }
 
     if ( m_vertices.find(id_vert1)==m_vertices.end() || m_vertices.find(id_vert2)==m_vertices.end() )
@@ -550,8 +547,14 @@ void Graph::ajout_pic()
     std::cin>>lien_1;
     std::cout<< "poids :";
     std::cin>>poids;
-    add_interfaced_vertex(m_vertices.size(),0,400,400,nom);
-    add_interfaced_edge(m_edges.size(),m_vertices.size()-1,lien_1,poids);
+    add_interfaced_vertex(0,0,400,400,nom);
+    for (std::map<int, Vertex>::iterator it = m_vertices.begin();it != m_vertices.end();it++)
+    {
+        if(it->second.m_interface->m_img.get_pic_name()==nom)
+        {
+            add_interfaced_edge(0,it->first,lien_1,poids);
+        }
+    }
 
 }
 
@@ -930,6 +933,7 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
 // Retourner la composante fortement connexe c
         return c ;
     }
+    return 0;
 }
 
 void Graph::afficher_connex(Graph g)
@@ -966,3 +970,9 @@ void Graph::afficher_connex(Graph g)
         }
     }
 }
+/*void Graph::Temporalite()
+{
+    int temps;
+    int temps2;
+
+}*/

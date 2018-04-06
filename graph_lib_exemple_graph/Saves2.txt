@@ -1,16 +1,15 @@
-11
-0 30 106 10 loup.jpg
-1 40 385 7 renard.jpg
-2 20 -29 221 cerf.jpg
-3 30 182 312 sanglier.jpg
-4 50 338 315 chevreuil.jpg
-5 60 735 10 chouette.jpg
-6 50 521 314 ecureuil.jpg
-7 40 735 309 campagnol.jpg
-8 30 -13 505 fourmi.jpg
-9 20 307 542 herbe.jpg
-10 0 529 539 lapin.jpg
-18
+10
+0 30 104 8 loup.jpg
+1 40 383 5 renard.jpg
+2 20 -31 219 cerf.jpg
+3 30 180 310 sanglier.jpg
+4 50 336 313 chevreuil.jpg
+5 60 733 8 chouette.jpg
+6 50 519 312 ecureuil.jpg
+7 40 733 307 campagnol.jpg
+8 30 -15 503 fourmi.jpg
+9 20 305 540 herbe.jpg
+15
 0 1 0 2
 1 1 0 3
 2 1 0 4
@@ -26,6 +25,3 @@
 12 1 6 9
 13 1 7 9
 14 1 8 9
-15 0 10 9
-17 0 1 9
-18 0 9 1
