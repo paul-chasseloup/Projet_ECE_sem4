@@ -159,21 +159,30 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_supprimer.set_posx(0);
     m_supprimer.set_posy(0);
     m_supprimer.set_bg_color(ROUGE);
-    m_text_supprimer.set_message("SUPPRIMER");
+    m_text_supprimer.set_message("SUPR SOMMET");
 
     m_top_box.add_child(m_ajouter_sommet);
     m_ajouter_sommet.add_child(m_text_ajouter_sommet);
     m_ajouter_sommet.set_dim(80,40);
     m_ajouter_sommet.set_posx(0);
-    m_ajouter_sommet.set_posy(40);
+    m_ajouter_sommet.set_posy(80);
     m_ajouter_sommet.set_bg_color(FUCHSIA);
     m_text_ajouter_sommet.set_message("ADD SOMMET");
+
+
+    m_top_box.add_child(m_ajouter_arete);
+    m_ajouter_arete.add_child(m_text_ajouter_arete);
+    m_ajouter_arete.set_dim(80,40);
+    m_ajouter_arete.set_posx(0);
+    m_ajouter_arete.set_posy(120);
+    m_ajouter_arete.set_bg_color(ROUGECLAIR);
+    m_text_ajouter_arete.set_message("ADD ARETE");
 
     m_top_box.add_child(m_sauvegarde);
     m_sauvegarde.add_child(m_text_sauvegarde);
     m_sauvegarde.set_dim(80,40);
     m_sauvegarde.set_posx(0);
-    m_sauvegarde.set_posy(120);
+    m_sauvegarde.set_posy(160);
     m_sauvegarde.set_bg_color(BLEUCLAIR);
     m_text_sauvegarde.set_message("SAVE");
 
@@ -181,17 +190,17 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_quitter.add_child(m_text_quitter);
     m_quitter.set_dim(80,40);
     m_quitter.set_posx(0);
-    m_quitter.set_posy(160);
+    m_quitter.set_posy(200);
     m_quitter.set_bg_color(VIOLETCLAIR);
     m_text_quitter.set_message("QUITTER");
 
-    m_top_box.add_child(m_ajouter_arete);
-    m_ajouter_arete.add_child(m_text_ajouter_arete);
-    m_ajouter_arete.set_dim(80,40);
-    m_ajouter_arete.set_posx(0);
-    m_ajouter_arete.set_posy(80);
-    m_ajouter_arete.set_bg_color(ROUGECLAIR);
-    m_text_ajouter_arete.set_message("ADD ARETE");
+    m_top_box.add_child(m_supprimer_arete);
+    m_supprimer_arete.add_child(m_text_supprimer_arete);
+    m_supprimer_arete.set_dim(80,40);
+    m_supprimer_arete.set_posx(0);
+    m_supprimer_arete.set_posy(40);
+    m_supprimer_arete.set_bg_color(GRISCLAIR);
+    m_text_supprimer_arete.set_message("SUPR ARETE");
 }
 
 int GraphInterface::update()
@@ -203,65 +212,32 @@ int GraphInterface::update()
     }
     if(m_ajouter_sommet.clicked())
     {
-        a= 2;
+        a=  2;
     }
     if(m_supprimer.clicked())
     {
-        a= 3;
+        a=  3;
     }
     if(m_sauvegarde.clicked())
     {
-        a= 4;
+        a=  4;
     }
     if(m_ajouter_arete.clicked())
     {
-        a= 5;
+        a=  5;
+    }
+    if(m_supprimer_arete.clicked())
+    {
+        a= 6;
     }
     return a;
-
 }
-/// Méthode spéciale qui construit un graphe arbitraire (démo)
-/// Cette méthode est à enlever et remplacer par un système
-/// de chargement de fichiers par exemple.
-/// Bien sûr on ne veut pas que vos graphes soient construits
-/// "à la main" dans le code comme ça.
-/*void Graph::make_example()
-{
-    m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
-    // La ligne précédente est en gros équivalente à :
-    // m_interface = new GraphInterface(50, 0, 750, 600);
 
-    /// Les sommets doivent être définis avant les arcs
-    // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
-    add_interfaced_vertex(0, 30.0, 200, 100, "clown1.jpg");
-    add_interfaced_vertex(1, 60.0, 400, 100, "clown2.jpg");
-    add_interfaced_vertex(2,  50.0, 200, 300, "clown3.jpg");
-    add_interfaced_vertex(3,  0.0, 400, 300, "clown4.jpg");
-    add_interfaced_vertex(4,  100.0, 600, 300, "clown5.jpg");
-    add_interfaced_vertex(5,  0.0, 100, 500, "bad_clowns_xx3xx.jpg", 0);
-    add_interfaced_vertex(6,  0.0, 300, 500, "bad_clowns_xx3xx.jpg", 1);
-    add_interfaced_vertex(7,  0.0, 500, 500, "bad_clowns_xx3xx.jpg", 2);
-
-    /// Les arcs doivent être définis entre des sommets qui existent !
-    // AJouter l'arc d'indice 0, allant du sommet 1 au sommet 2 de poids 50 etc...
-    add_interfaced_edge(0, 1, 2, 50.0);
-    add_interfaced_edge(1, 0, 1, 50.0);
-    add_interfaced_edge(2, 1, 3, 75.0);
-    add_interfaced_edge(3, 4, 1, 25.0);
-    add_interfaced_edge(4, 6, 3, 25.0);
-    add_interfaced_edge(5, 7, 3, 25.0);
-    add_interfaced_edge(6, 3, 4, 0.0);
-    add_interfaced_edge(7, 2, 0, 100.0);
-    add_interfaced_edge(8, 5, 2, 20.0);
-    add_interfaced_edge(9, 3, 7, 80.0);
-}
-*/
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
 void Graph::update(Graph g)
 {
 
     int a=m_interface->update();
-
     if(a==1)
     {
         exit(1);
@@ -269,7 +245,6 @@ void Graph::update(Graph g)
     if(a==2)
     {
         ajout_pic();
-
     }
     if(a==3)
     {
@@ -284,11 +259,10 @@ void Graph::update(Graph g)
     {
         ajouter_edge();
     }
-
-
-
-
-
+    if (a==6)
+    {
+        supprimer_arete();
+    }
 
 }
 void Graph::update1()
@@ -376,34 +350,34 @@ Graph Graph::menu(Graph g)
     page2=create_bitmap(1228,748);
     selec0=load_bitmap("menu 0.bmp",NULL);
     if(selec0 == NULL)
-        {
-            printf("Erreur de chargement menu 0.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 0.bmp");
+        exit(0);
+    }
     selec1=load_bitmap("menu 1.bmp",NULL);
     if(selec1 == NULL)
-        {
-            printf("Erreur de chargement menu 1.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 1.bmp");
+        exit(0);
+    }
     selec2=load_bitmap("menu 2.bmp",NULL);
     if(selec2 == NULL)
-        {
-            printf("Erreur de chargement menu 2.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 2.bmp");
+        exit(0);
+    }
     selec3=load_bitmap("menu 3.bmp",NULL);
     if(selec3 == NULL)
-        {
-            printf("Erreur de chargement menu 3.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 3.bmp");
+        exit(0);
+    }
     selec4=load_bitmap("menu 4.bmp",NULL);
     if(selec4 == NULL)
-        {
-            printf("Erreur de chargement menu 4.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 4.bmp");
+        exit(0);
+    }
 
     int selec=0;
     while ((selec!=4&&selec!=3&&selec!=2&&selec!=1)||!mouse_b&1)
@@ -441,47 +415,41 @@ Graph Graph::menu(Graph g)
         /// ici en fonction de la selection, on choisis quel graphe faire.
         if (mouse_b&1)
         {
+
             switch (selec)
             {
             case 1:
                 fichier="Saves1.txt";
                 g.back_pic("Saves1.txt");
                 g.set_num_graph(1);
+                g.afficher_connex(g);
                 break;
 
             case 2:
                 fichier="Saves2.txt";
                 g.back_pic("Saves2.txt");
-                g.generate_matrice();
                 g.set_num_graph(2);
-                int** valeur;
-
-                std::cout<<"matrice de forte connexite"<<std::endl;
-                valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
-                for (int i=0; i<g.m_ordre; i++)
-                {
-                    for (int j=0;j<g.m_ordre;j++)
-                    {
-                        std::cout<<valeur[i][j]<<" ";
-                    }
-                    std::cout<<std::endl;
-                }
+                g.afficher_connex(g);
                 break;
 
             case 3:
                 fichier="Saves3.txt";
                 g.back_pic("Saves3.txt");
                 g.set_num_graph(3);
+                g.afficher_connex(g);
                 break;
-
+            case 4:
+                exit(0);
+                break;
             default:
                 break;
             }
         }
     }
 
-return g;
+    return g;
 }
+
 
 void Graph::save_pic(const std::string& nom_du_fichier)
 {
@@ -632,7 +600,49 @@ void Graph::supprimer_pic()
 
         }
 }
+void Graph::supprimer_arete()
+{
+    std::vector<int> temp;
+    std::string nompred;
+    std::string nomsuc;
+    int vidx1;
+    int vidx2;
+    std::cout<<"Suppression"<<std::endl;
+    std::cout<<"Entrer nom predecesseur"<<std::endl;
+    std::cin>>nompred;
+    std::cout<<"Entrer nom successeur"<<std::endl;
+    std::cin>>nomsuc;
 
+
+    for (std::map<int, Vertex>::iterator it1= m_vertices.begin(); it1!= m_vertices.end(); it1++)
+        {
+            it1->first; //key
+            it1->second; //pointe sur le vertex
+            if(it1->second.m_interface->m_img.get_pic_name()==nompred)
+            {
+                vidx1=it1->first;
+
+            }
+            if(it1->second.m_interface->m_img.get_pic_name()==nomsuc)
+            {
+                vidx2=it1->first;
+
+            }
+        }
+
+        for (std::map<int, Edge>::iterator it= m_edges.begin(); it!= m_edges.end(); it++)
+        {
+            it->first; //key
+            it->second; //pointe sur le vertex
+            if(it->second.m_from==vidx1 && it->second.m_to==vidx2)
+            {
+                test_remove_edge(it->first);
+                break;
+
+            }
+
+        }
+}
 void Graph::test_remove_vertex(int vidx)
 {
 /// référence vers le Vertex à enlever
@@ -814,7 +824,7 @@ int** Graph::toutesComposantesConnexes(int**matrice, int ordre)
     int x,y;
 
     tabc=new int*[ordre];
-    for(int i=0;i<ordre;i++)
+    for(int i=0; i<ordre; i++)
     {
         tabc[i]=new int[ordre];
     }
@@ -822,20 +832,20 @@ int** Graph::toutesComposantesConnexes(int**matrice, int ordre)
 
     for(int i=0; i<ordre; i++)
     {
-        for(int j=0;j<ordre;j++)
+        for(int j=0; j<ordre; j++)
         {
             tabc[i][j]=0;
         }
         marque[i]=0;
     }
 
-    for(x=0;x<ordre;x++)
+    for(x=0; x<ordre; x++)
     {
         if(!marque[x])
         {
-            tabc[x]=uneComposanteFortementConnexe(matrice,ordre,x); ///s?
+            tabc[x]=uneComposanteFortementConnexe(matrice,ordre,x);
             marque[x]=1;
-            for(y=0;y<ordre;y++)
+            for(y=0; y<ordre; y++)
             {
                 if(tabc[x][y] && !marque[y])
                 {
@@ -896,7 +906,7 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
             }
         }
         ajoute=1;
-        for(int i=0;i<ordre;i++)
+        for(int i=0; i<ordre; i++)
             marques[i]=0;
 // Recherche des composantes connexes arrivant à s à ajouter dans c2 :
         for (x=0 ; x<ordre ; x++)
@@ -919,6 +929,40 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
             c[x] = c1[x] & c2[x] ;
 // Retourner la composante fortement connexe c
         return c ;
+    }
+}
 
+void Graph::afficher_connex(Graph g)
+{
+    int** valeur;
+    int ctr=0;
+    std::vector<int> v;
+
+    g.generate_matrice();
+    std::cout<<"matrice de forte connexite"<<std::endl;
+    valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
+    for (int i=0; i<g.m_ordre; i++)
+    {
+        ctr=0;
+        for (int j=0; j<g.m_ordre; j++)
+        {
+            //std::cout<<valeur[i][j]<<" ";
+            if (valeur[i][j]==1)
+            {
+                ctr++;
+                v.push_back(j);
+            }
+        }
+
+        if (ctr>0)
+        {
+            std::cout<<"composante fortement connexe : ";
+            for (int k=0; k<ctr; k++)
+            {
+                std::cout<<v.back()<<" ";
+                v.pop_back();
+            }
+            std::cout<<std::endl;
+        }
     }
 }

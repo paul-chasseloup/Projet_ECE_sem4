@@ -289,3 +289,61 @@
 	<time.h>
 	<fstream>
 
+1523044387 source:d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523044387 d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523044387 source:d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523044387 d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523044387 d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523044388 d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523044388 source:d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523044387 source:d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523045611 d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523045538 source:d:\projet_ece_sem4-master (1)\projet_ece_sem4-master\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<allegro.h>
+	<time.h>
+	<fstream>
+

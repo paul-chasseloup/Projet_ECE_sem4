@@ -274,6 +274,8 @@ class GraphInterface
         grman::WidgetText m_text_quitter;
         grman::WidgetButton m_ajouter_arete;
         grman::WidgetText m_text_ajouter_arete;
+        grman::WidgetButton m_supprimer_arete;
+        grman::WidgetText m_text_supprimer_arete;
 
 
         // A compléter éventuellement par des widgets de décoration ou
@@ -330,12 +332,14 @@ class Graph
         void back_pic(const std::string& nom_du_fichier);
         void lireFichier(std::string nomFichier);
         void supprimer_pic();
+        void supprimer_arete();
         void ajouter_edge();
         void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
         void generate_matrice();
         int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
         int** toutesComposantesConnexes(int**matrice, int ordre);
+        void afficher_connex(Graph g);
         void ajout_pic();
         int m_ordre;
         int m_arete;
