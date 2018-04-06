@@ -154,26 +154,26 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_main_box.set_bg_color(BLANCJAUNE);
 
     m_top_box.add_child(m_supprimer);
-    m_supprimer.add_child(m_text_supprimer);  ///boutton
+    m_supprimer.add_child(m_text_supprimer);  ///boutons
     m_supprimer.set_dim(80,40);
     m_supprimer.set_posx(0);
     m_supprimer.set_posy(0);
     m_supprimer.set_bg_color(ROUGE);
     m_text_supprimer.set_message("SUPPRIMER");
 
-    m_top_box.add_child(m_ajouter);
-    m_ajouter.add_child(m_text_ajouter);
-    m_ajouter.set_dim(80,40);
-    m_ajouter.set_posx(0);
-    m_ajouter.set_posy(40);
-    m_ajouter.set_bg_color(FUCHSIA);
-    m_text_ajouter.set_message("AJOUTER");
+    m_top_box.add_child(m_ajouter_sommet);
+    m_ajouter_sommet.add_child(m_text_ajouter_sommet);
+    m_ajouter_sommet.set_dim(80,40);
+    m_ajouter_sommet.set_posx(0);
+    m_ajouter_sommet.set_posy(40);
+    m_ajouter_sommet.set_bg_color(FUCHSIA);
+    m_text_ajouter_sommet.set_message("ADD SOMMET");
 
     m_top_box.add_child(m_sauvegarde);
     m_sauvegarde.add_child(m_text_sauvegarde);
     m_sauvegarde.set_dim(80,40);
     m_sauvegarde.set_posx(0);
-    m_sauvegarde.set_posy(80);
+    m_sauvegarde.set_posy(120);
     m_sauvegarde.set_bg_color(BLEUCLAIR);
     m_text_sauvegarde.set_message("SAVE");
 
@@ -181,9 +181,17 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_quitter.add_child(m_text_quitter);
     m_quitter.set_dim(80,40);
     m_quitter.set_posx(0);
-    m_quitter.set_posy(120);
+    m_quitter.set_posy(160);
     m_quitter.set_bg_color(VIOLETCLAIR);
     m_text_quitter.set_message("QUITTER");
+
+    m_top_box.add_child(m_ajouter_arete);
+    m_ajouter_arete.add_child(m_text_ajouter_arete);
+    m_ajouter_arete.set_dim(80,40);
+    m_ajouter_arete.set_posx(0);
+    m_ajouter_arete.set_posy(80);
+    m_ajouter_arete.set_bg_color(ROUGECLAIR);
+    m_text_ajouter_arete.set_message("ADD ARETE");
 }
 
 int GraphInterface::update()
@@ -192,9 +200,21 @@ int GraphInterface::update()
     {
        return 1;
     }
-    if(m_ajouter.clicked())
+    if(m_ajouter_sommet.clicked())
     {
         return 2;
+    }
+    if(m_supprimer.clicked())
+    {
+        return 3;
+    }
+    if(m_sauvegarde.clicked())
+    {
+        return 4;
+    }
+    if(m_ajouter_arete.clicked())
+    {
+        return 5;
     }
 
 }
@@ -235,7 +255,7 @@ int GraphInterface::update()
 }
 */
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-void Graph::update()
+void Graph::update(Graph g)
 {
     if (!m_interface)
         return;
@@ -256,6 +276,19 @@ void Graph::update()
     {
         ajout_pic();
     }
+    if(a==3)
+    {
+       supprimer_pic();
+    }
+
+    if(a==4)
+    {
+        sauvegarde(g);
+    }
+    if (a==5)
+    {
+        ajouter_edge();
+    }
     m_interface->update();
 
     for (auto &elt : m_vertices)
@@ -266,7 +299,24 @@ void Graph::update()
 
 
 }
-
+void Graph::ajouter_edge()
+{
+    std::string nom;
+    int lien_1, lien_2,poids;
+    std::cout<<"Vous voulez creer un nouvel element " << std::endl;
+    std::cout<<"Veuillez entrer le nom de l'image qui lui est associee: " << std::endl;
+    std::cin>>nom;
+    std::cout<<"Veuillez entrer ses liens : "<< std::endl;
+    std::cout<<"lien 1 : ";
+    std::cin>>lien_1;
+    std::cout<<std::endl;
+    std::cout<<"lien 2 : ";
+    std::cin>>lien_2;
+    std::cout<<std::endl;
+    std::cout<< "poids :";
+    std::cin>>poids;
+    add_interfaced_edge(m_edges.size()+1,lien_1,lien_2,poids);
+}
 /// Aide à l'ajout de sommets interfacés
 void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name, int pic_idx )
 {
@@ -382,16 +432,19 @@ Graph Graph::menu(Graph g)
             switch (selec)
             {
             case 1:
+                fichier="Saves1.txt";
                 g.back_pic("Saves1.txt");
                 g.set_num_graph(1);
                 break;
 
             case 2:
+                fichier="Saves2.txt";
                 g.back_pic("Saves2.txt");
                 g.set_num_graph(2);
                 break;
 
             case 3:
+                fichier="Saves3.txt";
                 g.back_pic("Saves3.txt");
                 g.set_num_graph(3);
                 break;
@@ -404,50 +457,7 @@ Graph Graph::menu(Graph g)
 
 return g;
 }
-/*void Graph::Creation(const std::string& nom_du_fichier)
-{
-    std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
-	// Déclaration des variables
-	// pour la boucle de remplissage
-    int i=0;
-	// pour les données saisies
-    std::string A1,A2;
-    int pos_x, pos_y;
 
-    if(ofs)
-    {
-        // On montre que le fichier est bien ouvert
-        std::cout << "Writing " << nom_du_fichier << " => OK" << std::endl;
-	// On remplit autant qu'on veut
-        while (i!=1)
-        {
-		//Boucle intéractive
-            std::cout << "Premier element : " << std::endl;
-		//On saisit le premier element
-            std::cin >>A1;
-		//On saisit le deuxieme element
-            std::cout << "Deuxieme element : " << std::endl;
-            std::cin >>A2;
-            //Boucle intéractive
-            std::cout << "Pos_x : " << std::endl;
-		//On saisit le premier element
-            std::cin >>pos_x;
-		//On saisit le deuxieme element
-            std::cout << "Pos_y : " << std::endl;
-            std::cin >>pos_y;
-		// On inscrit dans le fichier
-             ofs << A1 << A2 << pos_x << pos_y << std::endl;
-             std::cout << "Appuyez sur 1 pour arreter, sur une autre touche sinon : " << std::endl;
-             std::cin >>i;
-        }
-
-	std::cout << "Ecriture reussie" << std::endl;
-    }
-    else
-    {
-        std::cout << "Cannot write " << nom_du_fichier << std::endl;
-    }
-};*/
 void Graph::save_pic(const std::string& nom_du_fichier)
 {
     std::ofstream ofs(nom_du_fichier.c_str(), std::ios::out);
@@ -548,7 +558,98 @@ void Graph::ajout_pic()
     std::cout<< "poids :";
     std::cin>>poids;
     add_interfaced_vertex(m_vertices.size()+1,0,400,400,nom);
-    add_interfaced_edge(m_edges.size()+1,m_edges.size()+1,lien_1,poids);
+    add_interfaced_edge(m_edges.size()+1,m_vertices.size(),lien_1,poids);
+}
+
+void Graph::supprimer_pic()
+{
+    std::vector<int> temp;
+    std::string nom;
+    int vidx;
+    std::cout<<"Suppression"<<std::endl;
+    std::cin>>nom;
+
+
+    for (std::map<int, Vertex>::iterator it1= m_vertices.begin(); it1!= m_vertices.end(); it1++)
+        {
+            it1->first; //key
+            it1->second; //pointe sur le vertex
+            if(it1->second.m_interface->m_img.get_pic_name()==nom)
+            {
+                vidx=it1->first;
+
+            }
+
+        }
+     //pointe sur le edge
+        for(std::map<int, Edge>::iterator it=m_edges.begin(); it!=m_edges.end(); it++)
+        {
+            if (it->second.m_from==vidx||it->second.m_to==vidx)
+            {
+                temp.push_back(it->first);
+            }
+        }
+        for(auto elem : temp)
+        {
+            test_remove_edge(elem);
+        }
+
+        for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end(); it++)
+        {
+            it->first; //key
+            it->second; //pointe sur le vertex
+            if(it->second.m_interface->m_img.get_pic_name()==nom)
+            {
+                m_vertices.erase(it);
+                break;
+
+            }
+
+        }
+}
+
+void Graph::test_remove_edge(int eidx)
+{
+/// référence vers le Edge à enlever
+    Edge &remed=m_edges.at(eidx);
+
+    std::cout << "Removing edge " << eidx << " " << remed.m_from << "->" << remed.m_to << " " << remed.m_weight << std::endl;
+
+/// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+    std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
+    std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
+    std::cout << m_edges.size() << std::endl;
+
+/// test : on a bien des éléments interfacés
+    if (m_interface && remed.m_interface)
+    {
+/// Ne pas oublier qu'on a fait ça à l'ajout de l'arc :
+        /* EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]); */
+        /* m_interface->m_main_box.add_child(ei->m_top_edge); */
+        /* m_edges[idx] = Edge(weight, ei); */
+/// Le new EdgeInterface ne nécessite pas de delete car on a un shared_ptr
+/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// mais il faut bien enlever le conteneur d'interface m_top_edge de l'arc de la main_box du graphe
+        m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge );
+    }
+
+/// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+/// References sur les listes de edges des sommets from et to
+    std::vector<int> &vefrom = m_vertices[remed.m_from].m_out;
+    std::vector<int> &veto = m_vertices[remed.m_to].m_in;
+    vefrom.erase( std::remove( vefrom.begin(), vefrom.end(), eidx ), vefrom.end() );
+    veto.erase( std::remove( veto.begin(), veto.end(), eidx ), veto.end() );
+
+/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+/// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
+    m_edges.erase( eidx );
+
+/// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+    std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
+    std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
+    std::cout << m_edges.size() << std::endl;
+
 }
 
 void Graph::allouer_mat(int ordre)

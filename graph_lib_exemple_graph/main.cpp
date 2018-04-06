@@ -18,7 +18,7 @@ int main()
     //g.make_example();
 
     g=g.menu(g);
-    //g.ajout_pic();
+    //g.supprimer_pic();
 
 
     /// Vous gardez la main sur la "boucle de jeu"
@@ -26,11 +26,11 @@ int main()
     while (!key[KEY_ESC])
     {
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
-        g.update();
+        g.update(g);
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
     }
-    g.sauvegarde(g);
+    //g.sauvegarde(g);
     grman::fermer_allegro();
 
     return 0;

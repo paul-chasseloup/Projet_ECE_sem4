@@ -1,15 +1,18 @@
-5
-0 30 708 -5 voiture.bmp
-1 60 460 162 buse.bmp
-2 50 616 425 serpent.bmp
-3 20 279 426 rongeur.bmp
-4 40 22 549 herbe.bmp
-5
+8
+0 30 696 -17 voiture.bmp
+1 60 448 150 buse.bmp
+2 50 604 413 serpent.bmp
+3 20 267 414 rongeur.bmp
+4 40 10 537 herbe.bmp
+6 0 265 50 lapin.jpg
+7 0 84 22 campagnol.jpg
+8 0 217 262 cerf.jpg
+8
 0 1 0 1
 1 1 1 2
 2 1 1 3
 3 1 2 3
 4 1 3 4
-
-
-
+6 28 0 6
+7 0 7 4
+8 0 8 4
