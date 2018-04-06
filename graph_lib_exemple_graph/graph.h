@@ -345,6 +345,7 @@ class Graph
         void update(Graph g);
         Graph menu(Graph g);
         void sauvegarde(Graph g);
+        void afficher_connex(Graph g);
 
 };
 

@@ -173,13 +173,14 @@
 	<iostream>
 	"graph.h"
 
-1523028902 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\graph_lib_exemple_graph\graph.cpp
+1523034652 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\graph_lib_exemple_graph\graph.cpp
 	"graph.h"
 	<allegro.h>
 	<time.h>
 	<fstream>
+	<vector>
 
-1522995180 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\graph_lib_exemple_graph\graph.h
+1523034556 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>

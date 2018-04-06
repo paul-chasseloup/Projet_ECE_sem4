@@ -2,7 +2,7 @@
 #include <allegro.h>
 #include <time.h>
 #include <fstream>
-
+#include <vector>
 
 /***************************************************
                     VERTEX
@@ -198,7 +198,7 @@ int GraphInterface::update()
 {
     if (m_quitter.clicked())
     {
-       return 1;
+        return 1;
     }
     if(m_ajouter_sommet.clicked())
     {
@@ -278,7 +278,7 @@ void Graph::update(Graph g)
     }
     if(a==3)
     {
-       supprimer_pic();
+        supprimer_pic();
     }
 
     if(a==4)
@@ -364,34 +364,34 @@ Graph Graph::menu(Graph g)
     page2=create_bitmap(1228,748);
     selec0=load_bitmap("menu 0.bmp",NULL);
     if(selec0 == NULL)
-        {
-            printf("Erreur de chargement menu 0.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 0.bmp");
+        exit(0);
+    }
     selec1=load_bitmap("menu 1.bmp",NULL);
     if(selec1 == NULL)
-        {
-            printf("Erreur de chargement menu 1.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 1.bmp");
+        exit(0);
+    }
     selec2=load_bitmap("menu 2.bmp",NULL);
     if(selec2 == NULL)
-        {
-            printf("Erreur de chargement menu 2.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 2.bmp");
+        exit(0);
+    }
     selec3=load_bitmap("menu 3.bmp",NULL);
     if(selec3 == NULL)
-        {
-            printf("Erreur de chargement menu 3.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 3.bmp");
+        exit(0);
+    }
     selec4=load_bitmap("menu 4.bmp",NULL);
     if(selec4 == NULL)
-        {
-            printf("Erreur de chargement menu 4.bmp");
-            exit(0);
-        }
+    {
+        printf("Erreur de chargement menu 4.bmp");
+        exit(0);
+    }
 
     int selec=0;
     while ((selec!=4&&selec!=3&&selec!=2&&selec!=1)||!mouse_b&1)
@@ -429,37 +429,28 @@ Graph Graph::menu(Graph g)
         /// ici en fonction de la selection, on choisis quel graphe faire.
         if (mouse_b&1)
         {
+
             switch (selec)
             {
             case 1:
                 fichier="Saves1.txt";
                 g.back_pic("Saves1.txt");
                 g.set_num_graph(1);
+                g.afficher_connex(g);
                 break;
 
             case 2:
                 fichier="Saves2.txt";
                 g.back_pic("Saves2.txt");
-                g.generate_matrice();
                 g.set_num_graph(2);
-                int** valeur;
-
-                std::cout<<"matrice de forte connexite"<<std::endl;
-                valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
-                for (int i=0; i<g.m_ordre; i++)
-                {
-                    for (int j=0;j<g.m_ordre;j++)
-                    {
-                        std::cout<<valeur[i][j]<<" ";
-                    }
-                    std::cout<<std::endl;
-                }
+                g.afficher_connex(g);
                 break;
 
             case 3:
                 fichier="Saves3.txt";
                 g.back_pic("Saves3.txt");
                 g.set_num_graph(3);
+                g.afficher_connex(g);
                 break;
 
             default:
@@ -468,7 +459,7 @@ Graph Graph::menu(Graph g)
         }
     }
 
-return g;
+    return g;
 }
 
 void Graph::save_pic(const std::string& nom_du_fichier)
@@ -483,33 +474,33 @@ void Graph::save_pic(const std::string& nom_du_fichier)
         /// On sauvegarde les Vertex
         ofs<< i << std::endl;
         // on parcourt la map
-        for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end();it++)
+        for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end(); it++)
         {
             it->first; //key
             it->second; //pointe sur le vertex
 
             ofs << it->first << " " // on entre d'abord l'indice
-            << it->second.m_value<<" "
-            << it->second.m_interface->m_top_box.get_posx() << " " //on entre la position en x
-            << it->second.m_interface->m_top_box.get_posy() << " "  // on entre la position en y
-            << it->second.m_interface->m_img.get_pic_name()<< std::endl; // on entre le nom de l'image
+                << it->second.m_value<<" "
+                << it->second.m_interface->m_top_box.get_posx() << " " //on entre la position en x
+                << it->second.m_interface->m_top_box.get_posy() << " "  // on entre la position en y
+                << it->second.m_interface->m_img.get_pic_name()<< std::endl; // on entre le nom de l'image
         }
         ///On sauvegarde les Edges
         ofs << m_edges.size()<<std::endl;
-        for (std::map<int, Edge>::iterator it= m_edges.begin(); it!= m_edges.end();it++)
+        for (std::map<int, Edge>::iterator it= m_edges.begin(); it!= m_edges.end(); it++)
         {
             it->first; //key
             it->second; //pointe sur le edge
 
             ofs << it->first << " " // on entre d'abord l'indice
-            << it->second.m_weight << " " //on entre la poids
-            << it->second.m_from<< " "  // on entre le premier Vertex
-            << it->second.m_to<< std::endl; // on entre le deuxieme Vertex
+                << it->second.m_weight << " " //on entre la poids
+                << it->second.m_from<< " "  // on entre le premier Vertex
+                << it->second.m_to<< std::endl; // on entre le deuxieme Vertex
         }
 
-		// On inscrit dans le fichier
+        // On inscrit dans le fichier
 
-	std::cout << "Ecriture reussie" << std::endl;
+        std::cout << "Ecriture reussie" << std::endl;
     }
     else
     {
@@ -532,7 +523,7 @@ void Graph::back_pic(const std::string& nom_du_fichier)
         m_interface = std::make_shared<GraphInterface>(50,0,750,600);
         ifs >> y;
         // on parcourt la map
-        for (int i=0; i<y;i++)
+        for (int i=0; i<y; i++)
         {
 
             ifs >> a >> b >> c >> d >> nom;
@@ -541,16 +532,16 @@ void Graph::back_pic(const std::string& nom_du_fichier)
         }
         ///On affiche ensuite les Edges
         ifs >> i;
-        for (int j=0; j<i ;j++)
+        for (int j=0; j<i ; j++)
         {
             ifs >> a >> b >> c >> d ;
-            Graph::add_interfaced_edge (a ,c,d,b);
+            Graph::add_interfaced_edge (a,c,d,b);
 
         }
 
-		// On inscrit dans le fichier
+        // On inscrit dans le fichier
 
-	std::cout << "Lecture reussie" << std::endl;
+        std::cout << "Lecture reussie" << std::endl;
     }
     else
     {
@@ -584,40 +575,40 @@ void Graph::supprimer_pic()
 
 
     for (std::map<int, Vertex>::iterator it1= m_vertices.begin(); it1!= m_vertices.end(); it1++)
+    {
+        it1->first; //key
+        it1->second; //pointe sur le vertex
+        if(it1->second.m_interface->m_img.get_pic_name()==nom)
         {
-            it1->first; //key
-            it1->second; //pointe sur le vertex
-            if(it1->second.m_interface->m_img.get_pic_name()==nom)
-            {
-                vidx=it1->first;
-            }
-
-        }
-     //pointe sur le edge
-        for(std::map<int, Edge>::iterator it=m_edges.begin(); it!=m_edges.end(); it++)
-        {
-            if (it->second.m_from==vidx||it->second.m_to==vidx)
-            {
-                temp.push_back(it->first);
-            }
-        }
-        for(auto elem : temp)
-        {
-            test_remove_edge(elem);
+            vidx=it1->first;
         }
 
-        for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end(); it++)
+    }
+    //pointe sur le edge
+    for(std::map<int, Edge>::iterator it=m_edges.begin(); it!=m_edges.end(); it++)
+    {
+        if (it->second.m_from==vidx||it->second.m_to==vidx)
         {
-            it->first; //key
-            it->second; //pointe sur le vertex
-            if(it->second.m_interface->m_img.get_pic_name()==nom)
-            {
-                test_remove_vertex(it->first);
-                break;
+            temp.push_back(it->first);
+        }
+    }
+    for(auto elem : temp)
+    {
+        test_remove_edge(elem);
+    }
 
-            }
+    for (std::map<int, Vertex>::iterator it= m_vertices.begin(); it!= m_vertices.end(); it++)
+    {
+        it->first; //key
+        it->second; //pointe sur le vertex
+        if(it->second.m_interface->m_img.get_pic_name()==nom)
+        {
+            test_remove_vertex(it->first);
+            break;
 
         }
+
+    }
 }
 
 void Graph::test_remove_vertex(int vidx)
@@ -712,13 +703,13 @@ void Graph::allouer_mat(int ordre)
 {
     m_matrice1=new int*[ordre];           ///Création matrice en fonction de l'ordre.
 
-    for(int i=0;i<ordre;i++)
+    for(int i=0; i<ordre; i++)
     {
         m_matrice1[i]=new int[ordre];
     }
-    for (int j=0;j<ordre;j++)             ///Initialisation de la matrice.
+    for (int j=0; j<ordre; j++)           ///Initialisation de la matrice.
     {
-        for (int l=0 ;l<ordre; l++)
+        for (int l=0 ; l<ordre; l++)
         {
             m_matrice1[j][l]=0;
         }
@@ -757,11 +748,11 @@ void Graph::lireFichier(std::string nomFichier)
             }
         }
 
-    fichier.close();
+        fichier.close();
     }
 
- else
-    std::cerr <<"Impossible d'ouvrir le fichier"<< std::endl;
+    else
+        std::cerr <<"Impossible d'ouvrir le fichier"<< std::endl;
 
 }
 
@@ -801,7 +792,7 @@ int** Graph::toutesComposantesConnexes(int**matrice, int ordre)
     int x,y;
 
     tabc=new int*[ordre];
-    for(int i=0;i<ordre;i++)
+    for(int i=0; i<ordre; i++)
     {
         tabc[i]=new int[ordre];
     }
@@ -809,20 +800,20 @@ int** Graph::toutesComposantesConnexes(int**matrice, int ordre)
 
     for(int i=0; i<ordre; i++)
     {
-        for(int j=0;j<ordre;j++)
+        for(int j=0; j<ordre; j++)
         {
             tabc[i][j]=0;
         }
         marque[i]=0;
     }
 
-    for(x=0;x<ordre;x++)
+    for(x=0; x<ordre; x++)
     {
         if(!marque[x])
         {
-            tabc[x]=uneComposanteFortementConnexe(matrice,ordre,x); ///s?
+            tabc[x]=uneComposanteFortementConnexe(matrice,ordre,x);
             marque[x]=1;
-            for(y=0;y<ordre;y++)
+            for(y=0; y<ordre; y++)
             {
                 if(tabc[x][y] && !marque[y])
                 {
@@ -883,7 +874,7 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
             }
         }
         ajoute=1;
-        for(int i=0;i<ordre;i++)
+        for(int i=0; i<ordre; i++)
             marques[i]=0;
 // Recherche des composantes connexes arrivant à s à ajouter dans c2 :
         for (x=0 ; x<ordre ; x++)
@@ -906,6 +897,40 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
             c[x] = c1[x] & c2[x] ;
 // Retourner la composante fortement connexe c
         return c ;
+    }
+}
 
+void Graph::afficher_connex(Graph g)
+{
+    int** valeur;
+    int ctr=0;
+    std::vector<int> v;
+
+    g.generate_matrice();
+    std::cout<<"matrice de forte connexite"<<std::endl;
+    valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
+    for (int i=0; i<g.m_ordre; i++)
+    {
+        ctr=0;
+        for (int j=0; j<g.m_ordre; j++)
+        {
+            //std::cout<<valeur[i][j]<<" ";
+            if (valeur[i][j]==1)
+            {
+                ctr++;
+                v.push_back(j);
+            }
+        }
+
+        if (ctr>0)
+        {
+            std::cout<<"composante fortement connexe : ";
+            for (int k=0; k<ctr; k++)
+            {
+                std::cout<<v.back()<<" ";
+                v.pop_back();
+            }
+            std::cout<<std::endl;
+        }
     }
 }
