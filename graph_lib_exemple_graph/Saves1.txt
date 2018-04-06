@@ -1,0 +1,14 @@
+6
+0 30 692 -21 voiture.bmp
+1 60 444 146 buse.bmp
+2 50 600 409 serpent.bmp
+3 20 263 410 rongeur.bmp
+4 40 6 533 herbe.bmp
+8 0 213 258 cerf.jpg
+6
+0 1 0 1
+1 1 1 2
+2 1 1 3
+3 1 2 3
+4 1 3 4
+8 0 8 4
