@@ -1,9 +1,10 @@
 5
-voiture
-buse
-serpent
-rongeur
-herbe
+5
+0 30 200 100 voiture.bmp
+1 60 400 100 buse.bmp
+2 50 300 100 serpent.bmp
+3 20 200 100 rongeur.bmp
+4 40 300 100 herbe.bmp
 0 1 0 0 0
 0 0 1 1 0
 0 0 0 1 0
