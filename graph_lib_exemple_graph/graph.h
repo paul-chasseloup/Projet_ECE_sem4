@@ -140,7 +140,8 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
-
+        int m_r;
+        float m_K;
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
 
@@ -161,6 +162,7 @@ class Vertex
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
 };
 
 
@@ -338,6 +340,8 @@ class Graph
         void test_remove_edge(int eidx);
         void generate_matrice();
         void Temporalite();
+        void calcul_K(int idx);
+        void calcul_Npop(int idx);
         int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
         int** toutesComposantesConnexes(int**matrice, int ordre);
         void afficher_connex(Graph g);
