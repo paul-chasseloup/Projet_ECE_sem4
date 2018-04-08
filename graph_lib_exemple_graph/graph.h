@@ -114,14 +114,13 @@ class VertexInterface
         // Une boite pour le label précédent
         grman::WidgetText m_box_label_idx;
 
-        bool m_button_addEdge;
+        grman::WidgetButton m_button_addEdge;
 
     public :
 
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
         VertexInterface(int idx, int x, int y, std::string pic_name="", int pic_idx=0);
-        void set_value(bool button);
 };
 
 

@@ -509,6 +509,7 @@ Graph Graph::menu(Graph g)
                 g.back_pic(fichier);
                 g.set_num_graph(2);
                 g.afficher_connex(g);
+                g.init_k_connex();
                 break;
 
             case 3:
@@ -516,6 +517,7 @@ Graph Graph::menu(Graph g)
                 g.back_pic(fichier);
                 g.set_num_graph(3);
                 g.afficher_connex(g);
+                g.init_k_connex();
                 break;
             case 4:
                 exit(0);
@@ -1024,8 +1026,9 @@ void Graph::afficher_connex(Graph g)
     int ctr=0;
     std::vector<int> v;
 
+    std::cout<<"matrice d'adjacence :"<<std::endl;
     g.generate_matrice();
-    std::cout<<"matrice de forte connexite"<<std::endl;
+
     valeur=g.toutesComposantesConnexes(g.m_matrice1,g.m_ordre);
     for (int i=0; i<g.m_ordre; i++)
     {
@@ -1299,9 +1302,7 @@ void Graph::afficher_k_connex(std::vector<int>& inter,std::vector<std::vector <i
             }
             std::cout<<std::endl;
         }
-
     }
-
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -1320,10 +1321,6 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
     m_vertices[idx] = Vertex(value, vi);
 }
 
-void VertexInterface::set_value(bool button)
-{
-    m_button_addEdge=button;
-}
 
 ///ss prog qui initialise les bouton
 void Graph::initButton()

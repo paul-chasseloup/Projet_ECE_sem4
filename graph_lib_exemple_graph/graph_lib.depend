@@ -466,14 +466,15 @@
 	<iostream>
 	"graph.h"
 
-1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.cpp
+1523203196 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.cpp
 	"graph.h"
 	<allegro.h>
 	<time.h>
 	<fstream>
 	<map>
+	<queue>
 
-1523199563 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.h
+1523201960 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>
@@ -520,7 +521,7 @@
 1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\widget.cpp
 	"widget.h"
 
-1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\main.cpp
+1523202805 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
