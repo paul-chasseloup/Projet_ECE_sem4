@@ -114,6 +114,8 @@ class VertexInterface
         // Une boite pour le label précédent
         grman::WidgetText m_box_label_idx;
 
+        grman::WidgetButton m_button_addEdge;
+
     public :
 
         // Le constructeur met en place les éléments de l'interface
@@ -149,6 +151,9 @@ class Vertex
         // Docu shared_ptr : https://msdn.microsoft.com/fr-fr/library/hh279669.aspx
         // La ligne précédente est en gros équivalent à la ligne suivante :
         // VertexInterface * m_interface = nullptr;
+
+        bool m_existe;
+        bool m_marqueur;
 
 
     public:
@@ -197,11 +202,14 @@ class EdgeInterface
         // Un label de visualisation du poids de l'arc
         grman::WidgetText m_label_weight;
 
+        grman::WidgetBox m_cross;
+        grman::WidgetText m_text_number;
+
     public :
 
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
-        EdgeInterface(Vertex& from, Vertex& to);
+        EdgeInterface(Vertex& from, Vertex& to,int numS1, int numS2);
 };
 
 
@@ -239,6 +247,9 @@ class Edge
         void pre_update();
         void post_update();
         void set_fleche(float a);
+
+        void setFrom(int from);
+        void setTo(int to);
 };
 
 
@@ -314,6 +325,24 @@ class Graph
 
         int m_num_graph;
 
+        int m_nbArete;
+
+        ///boléen pour quitter le graphe
+        bool m_quitGraphe;
+
+        ///boléen qui dit si on doit ajouter une arête
+        bool m_ajouterNewEdge;
+
+        ///SAVOIR LES SOMMET QUI VONT FORMER UNE ARRËTE
+        ///savoir si on ajoute le sommet1 ou 2
+        bool m_addTo;
+        bool m_addFrom;
+        std::vector<int> m_vertexForNewEdge;
+        ///pour éviter de selectionner 2 fois le même sommets
+        int m_vertexAlreadyUse;
+
+        int m_toursDeBoucle;
+        int m_toursDeBoucleMax;
 
 
     public:
@@ -322,7 +351,8 @@ class Graph
         int m_arete;
         int ** m_matrice1;
         std::string fichier;
-
+        std::vector<grman::WidgetBox*> m_boxes;
+        std::vector<grman::WidgetEdge*> m_arrow;
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graph (GraphInterface *interface=nullptr) :
@@ -342,6 +372,8 @@ class Graph
         ///Boucle et Menu
         void boucle();
         void menu();
+        void vider_graph();
+        void vider_box();
 
         ///Sous-programmes de sauvegarde
         void save_pic(const std::string& nom_du_fichier);
@@ -349,13 +381,13 @@ class Graph
 
         ///Lecture de fichier
         void back_pic(const std::string& nom_du_fichier);
-        void back_FC(std::vector<int> vec);
         void lireFichier(std::string nomFichier);
 
         ///Sous-programmes de supression
         void supprimer_pic();
-        void supprimer_pic_connexe(int idx);
+        void supprimer_pic_idx(int idx);
         void supprimer_arete();
+        void supprimer_arete_idx(int idx);
         void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
 
@@ -376,9 +408,17 @@ class Graph
         /// La méthodes update à appeler dans la boucle de jeu pour les graphes avec interface
         void update1();
 
+        /// Sous-programmes pour le graphe réduit
+        void Graph_Reduit(std::vector <int> vec);
+        void create_box(std::string a);
+        void back_FC(std::vector<int> vec);
 
 
-
+        void init_k_connex();
+        void k_connex(std::vector<int>& inter, std::vector<std::vector <int>>& allCombi);
+        bool graphConnex(int idx);
+        void afficher_k_connex(std::vector<int>& inter,std::vector<std::vector <int>>& allCombi);
+        void initButton();
 };
 
 
