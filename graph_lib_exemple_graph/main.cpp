@@ -14,23 +14,28 @@ int main()
     Graph g;
 
     ///Appel des sous programmes
-    //g.lireFichier(fichier);
+    //g.lireFichier("Graphe1.txt");
     //g.make_example();
 
     g=g.menu(g);
 
+    //g.update1();
+    //g.supprimer_pic();
+
 
     /// Vous gardez la main sur la "boucle de jeu"
     /// ( contrairement à des frameworks plus avancés )
-    while ( !key[KEY_ESC] )
+    while (!key[KEY_ESC])
     {
+        g.Temporalite();
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
-        g.update();
+        g.update(g);
+        g.update1();
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
     }
-    g.sauvegarde(g);
+    //g.sauvegarde(g);
     grman::fermer_allegro();
 
     return 0;

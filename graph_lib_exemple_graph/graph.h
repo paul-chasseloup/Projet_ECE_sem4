@@ -140,7 +140,8 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
-
+        int m_r;
+        float m_K;
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
 
@@ -161,6 +162,7 @@ class Vertex
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
 };
 
 
@@ -263,6 +265,20 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
+            // Sera la boite à boutons en haut à droite
+        grman::WidgetButton m_ajouter_sommet;       // Sera le bouton avec le texte NEW
+        grman::WidgetButton m_supprimer;       // Sera le bouton avec le texte NEW
+        grman::WidgetText m_text_ajouter_sommet;
+        grman::WidgetText m_text_supprimer;
+        grman::WidgetButton m_sauvegarde;
+        grman::WidgetText m_text_sauvegarde;
+        grman::WidgetButton m_quitter;
+        grman::WidgetText m_text_quitter;
+        grman::WidgetButton m_ajouter_arete;
+        grman::WidgetText m_text_ajouter_arete;
+        grman::WidgetButton m_supprimer_arete;
+        grman::WidgetText m_text_supprimer_arete;
+
 
         // A compléter éventuellement par des widgets de décoration ou
         // d'édition (boutons ajouter/enlever ...)
@@ -272,11 +288,13 @@ class GraphInterface
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
         GraphInterface(int x, int y, int w, int h);
+        int update();
 };
 
 
 class Graph
 {
+
     private :
 
         /// La "liste" des arêtes
@@ -289,6 +307,7 @@ class Graph
         std::shared_ptr<GraphInterface> m_interface = nullptr;
 
         int m_num_graph;
+
 
 
     public:
@@ -314,11 +333,26 @@ class Graph
         void save_pic(const std::string& nom_du_fichier);
         void back_pic(const std::string& nom_du_fichier);
         void lireFichier(std::string nomFichier);
+        void supprimer_pic();
+        void supprimer_arete();
+        void ajouter_edge();
+        void test_remove_vertex(int vidx);
+        void test_remove_edge(int eidx);
+        void generate_matrice();
+        void Temporalite();
+        void calcul_K(int idx);
+        void calcul_Npop(int idx);
+        int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
+        int** toutesComposantesConnexes(int**matrice, int ordre);
+        void afficher_connex(Graph g);
+        void ajout_pic();
         int m_ordre;
         int m_arete;
-         int ** m_matrice1;
+        int ** m_matrice1;
+        std::string fichier;
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-        void update();
+        void update(Graph g);
+        void update1();
         Graph menu(Graph g);
         void sauvegarde(Graph g);
 

@@ -1,16 +1,16 @@
 12
-0 40 18 10 guepard.jpg
-1 30 244 11 leopard.jpg
-2 20 490 11 lion.jpg
-3 30 718 13 hyene.jpg
-4 20 -1 359 fourmi.jpg
-5 50 149 361 girafe.jpg
-6 40 302 358 gazelle.jpg
-7 30 456 363 singe.jpg
-8 40 607 363 zebre.jpg
-9 30 771 360 buffle.jpg
-10 40 130 580 arbre.jpg
-11 20 589 584 herbe.jpg
+0 40 16 8 guepard.jpg
+1 30 242 9 leopard.jpg
+2 20 488 9 lion.jpg
+3 30 716 11 hyene.jpg
+4 20 -3 357 fourmi.jpg
+5 50 147 359 girafe.jpg
+6 40 300 356 gazelle.jpg
+7 30 454 361 singe.jpg
+8 40 605 361 zebre.jpg
+9 30 769 358 buffle.jpg
+10 40 128 578 arbre.jpg
+11 20 587 582 herbe.jpg
 21
 0 1 0 5
 1 1 0 6
