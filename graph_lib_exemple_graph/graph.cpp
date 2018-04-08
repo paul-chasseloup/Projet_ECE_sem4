@@ -199,7 +199,7 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_quitter.add_child(m_text_quitter);
     m_quitter.set_dim(80,40);
     m_quitter.set_posx(0);
-    m_quitter.set_posy(280);
+    m_quitter.set_posy(320);
     m_quitter.set_bg_color(VIOLETCLAIR);
     m_text_quitter.set_message("QUITTER");
 
@@ -229,6 +229,15 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_flux.set_posy(240);
     m_flux.set_bg_color(JAUNECLAIR);
     m_text_flux.set_message("TEMP");
+
+    ///Bouton pour visualiser la K-Connexité
+    m_top_box.add_child(m_kconnexite);
+    m_kconnexite.add_child(m_text_k_connexite);
+    m_kconnexite.set_dim(80,40);
+    m_kconnexite.set_posx(0);
+    m_kconnexite.set_posy(280);
+    m_kconnexite.set_bg_color(ORANGECLAIR);
+    m_text_k_connexite.set_message("KCONNEXITE");
 }
 
 ///BOUCLE
@@ -288,6 +297,10 @@ void Graph::boucle()
         {
             /// On lance le programme de temporalite
             Temporalite();
+        }
+         if(m_interface->m_kconnexite.clicked())
+        {
+            init_k_connex();
         }
         ///on update à chaque tour de boucle
         update1();
@@ -995,6 +1008,7 @@ int* Graph::uneComposanteFortementConnexe (int** matrice, int ordre, int s)
 void Graph::afficher_connex()
 {
     int** valeur;
+    int nb_connexe;
     int ctr=0;
     std::vector<int> v;
     std::string a;
@@ -1018,7 +1032,7 @@ void Graph::afficher_connex()
 
         if (ctr>0)
         {
-            Graph_Reduit(v);
+            nb_connexe++;
             std::cout<<"composante fortement connexe : ";
             for (int k=0; k<ctr; k++)
             {
@@ -1027,6 +1041,33 @@ void Graph::afficher_connex()
 
             }
             std::cout<<std::endl;
+        }
+    }
+    if (nb_connexe!=m_ordre)
+    {
+        for (int i=0; i<m_ordre; i++)
+        {
+            ctr=0;
+            for (int j=0; j<m_ordre; j++)
+            {
+                ///std::cout<<valeur[i][j]<<" ";
+                if (valeur[i][j]==1)
+                {
+                    ctr++;
+                    v.push_back(j);
+                }
+            }
+            if (ctr>0)
+            {
+                Graph_Reduit(v);
+                for (int k=0; k<ctr; k++)
+                {
+                    std::cout<<v.back()<<" ";
+                    v.pop_back();
+
+                }
+                std::cout<<std::endl;
+            }
         }
     }
     /// On affiche le graphe réduit

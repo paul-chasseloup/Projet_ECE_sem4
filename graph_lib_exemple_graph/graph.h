@@ -278,9 +278,9 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-            // Sera la boite à boutons en haut à droite
-        grman::WidgetButton m_ajouter_sommet;       // Sera le bouton avec le texte NEW
-        grman::WidgetButton m_supprimer;       // Sera le bouton avec le texte NEW
+        ///Déclarations des boutons et textes des boutons
+        grman::WidgetButton m_ajouter_sommet;
+        grman::WidgetButton m_supprimer;
         grman::WidgetText m_text_ajouter_sommet;
         grman::WidgetText m_text_supprimer;
         grman::WidgetButton m_sauvegarde;
@@ -295,6 +295,8 @@ class GraphInterface
         grman::WidgetText m_text_connexite;
         grman::WidgetButton m_flux;
         grman::WidgetText m_text_flux;
+        grman::WidgetButton m_kconnexite;
+        grman::WidgetText m_text_k_connexite;
 
 
         // A compléter éventuellement par des widgets de décoration ou
@@ -413,7 +415,7 @@ class Graph
         void create_box(std::string a);
         void back_FC(std::vector<int> vec);
 
-
+        ///Sous-programmes pour la K-Connexite
         void init_k_connex();
         void k_connex(std::vector<int>& inter, std::vector<std::vector <int>>& allCombi);
         bool graphConnex(int idx);

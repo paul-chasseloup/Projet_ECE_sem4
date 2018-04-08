@@ -762,3 +762,55 @@
 	<map>
 	<queue>
 
+1523223200 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523223200 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523223200 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523223200 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523223200 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523223200 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523223200 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523224552 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523224552 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
