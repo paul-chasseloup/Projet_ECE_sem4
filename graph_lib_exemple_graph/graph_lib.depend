@@ -466,34 +466,33 @@
 	<iostream>
 	"graph.h"
 
-1523203196 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.cpp
+1523185888 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.cpp
 	"graph.h"
 	<allegro.h>
 	<time.h>
 	<fstream>
 	<map>
-	<queue>
 
-1523201960 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.h
+1523185015 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>
 	<memory>
 	"grman/grman.h"
 
-1523152092 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman.h
+1523184493 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman.h
 	<allegro.h>
 	<string>
 	"grman_couleurs.h"
 	"coords.h"
 	"widget.h"
 
-1523152092 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman_couleurs.h
+1523184493 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman_couleurs.h
 
-1523152092 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\coords.h
+1523184493 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\coords.h
 	<cmath>
 
-1523152092 c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\widget.h
+1523185015 c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\widget.h
 	"grman.h"
 	<iostream>
 	<string>
@@ -501,10 +500,10 @@
 	<algorithm>
 	<allegro.h>
 
-1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\coords.cpp
+1523184493 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\coords.cpp
 	"coords.h"
 
-1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman.cpp
+1523184493 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\grman.cpp
 	<cmath>
 	<unordered_map>
 	<unordered_set>
@@ -518,10 +517,187 @@
 	<loadpng.h>
 	<jpgalleg.h>
 
-1523152092 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\widget.cpp
+1523185015 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\grman\widget.cpp
 	"widget.h"
 
-1523202805 source:c:\users\paulc\onedrive\documents\github\projet_ece_sem4-paul\projet_ece_sem4-xavier\graph_lib_exemple_graph\main.cpp
+1523188450 source:c:\users\coline\documents\github\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-master\projet_ece_sem4-xavier\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523193262 source:d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523193262 d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523193262 source:d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523193262 d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523193262 d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523193262 d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523193262 source:d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523197494 source:d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523197494 d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523196854 source:d:\projet_ece_sem4-coline (2)\projet_ece_sem4-coline\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<allegro.h>
+	<time.h>
+	<fstream>
+	<map>
+
+1523200784 source:c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523200784 c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523200784 source:c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523200784 c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523200784 c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523200784 c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523200784 source:c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523200784 source:c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523206648 c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523206696 source:c:\users\coline\documents\github\projet final\projet_ece_sem4-master\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<allegro.h>
+	<time.h>
+	<fstream>
+	<map>
+
+1523215054 source:c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<allegro.h>
+	<time.h>
+	<fstream>
+	<map>
+
+1523216987 c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523200784 c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523200784 c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523200784 c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523200784 c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523200784 source:c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523200784 source:c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523200784 source:c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523200784 source:c:\users\paulc\onedrive\documents\github\graph_lib_exemple_graph\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
