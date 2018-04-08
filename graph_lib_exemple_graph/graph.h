@@ -114,11 +114,14 @@ class VertexInterface
         // Une boite pour le label précédent
         grman::WidgetText m_box_label_idx;
 
+        bool m_button_addEdge;
+
     public :
 
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
         VertexInterface(int idx, int x, int y, std::string pic_name="", int pic_idx=0);
+        void set_value(bool button);
 };
 
 
@@ -140,9 +143,13 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
-
+        int m_r;
+        float m_K;
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
+
+        bool m_existe;
+        bool m_marqueur;
 
         // Docu shared_ptr : https://msdn.microsoft.com/fr-fr/library/hh279669.aspx
         // La ligne précédente est en gros équivalent à la ligne suivante :
@@ -161,6 +168,7 @@ class Vertex
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
 };
 
 
@@ -187,6 +195,7 @@ class EdgeInterface
 
         // Une boite pour englober les widgets de réglage associés
         grman::WidgetBox m_box_edge;
+        grman::WidgetBox m_cross;
 
         // Un slider de visualisation/modification du poids valeur de l'arc
         grman::WidgetVSlider m_slider_weight;
@@ -194,11 +203,14 @@ class EdgeInterface
         // Un label de visualisation du poids de l'arc
         grman::WidgetText m_label_weight;
 
+        grman::WidgetText m_text_number;
+
     public :
 
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
-        EdgeInterface(Vertex& from, Vertex& to);
+        //EdgeInterface(Vertex& from, Vertex& to);
+        EdgeInterface(Vertex& from, Vertex& to,int numS1, int numS2);
 };
 
 
@@ -235,6 +247,9 @@ class Edge
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        void setFrom(int from);
+        void setTo(int to);
 };
 
 
@@ -274,6 +289,8 @@ class GraphInterface
         grman::WidgetText m_text_quitter;
         grman::WidgetButton m_ajouter_arete;
         grman::WidgetText m_text_ajouter_arete;
+        grman::WidgetButton m_supprimer_arete;
+        grman::WidgetText m_text_supprimer_arete;
 
 
         // A compléter éventuellement par des widgets de décoration ou
@@ -305,6 +322,24 @@ class Graph
         int m_num_graph;
 
 
+        int m_nbArete;
+
+        ///boléen pour quitter le graphe
+        bool m_quitGraphe;
+
+        ///boléen qui dit si on doit ajouter une arête
+        bool m_ajouterNewEdge;
+
+        ///SAVOIR LES SOMMET QUI VONT FORMER UNE ARRËTE
+        ///savoir si on ajoute le sommet1 ou 2
+        bool m_addTo;
+        bool m_addFrom;
+        std::vector<int> m_vertexForNewEdge;
+        ///pour éviter de selectionner 2 fois le même sommets
+        int m_vertexAlreadyUse;
+
+        int m_toursDeBoucle;
+        int m_toursDeBoucleMax;
 
     public:
 
@@ -330,12 +365,17 @@ class Graph
         void back_pic(const std::string& nom_du_fichier);
         void lireFichier(std::string nomFichier);
         void supprimer_pic();
+        void supprimer_arete();
         void ajouter_edge();
         void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
         void generate_matrice();
+        void Temporalite();
+        void calcul_K(int idx);
+        void calcul_Npop(int idx);
         int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
         int** toutesComposantesConnexes(int**matrice, int ordre);
+        void afficher_connex(Graph g);
         void ajout_pic();
         int m_ordre;
         int m_arete;
@@ -343,8 +383,15 @@ class Graph
         std::string fichier;
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update(Graph g);
+        void update1();
         Graph menu(Graph g);
         void sauvegarde(Graph g);
+
+        void init_k_connex();
+        void k_connex(std::vector<int>& inter, std::vector<std::vector <int>>& allCombi);
+        bool graphConnex(int idx);
+        void afficher_k_connex(std::vector<int>& inter,std::vector<std::vector <int>>& allCombi);
+        void initButton();
 
 };
 
