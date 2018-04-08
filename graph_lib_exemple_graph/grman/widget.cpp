@@ -404,6 +404,9 @@ void WidgetEdge::draw()
 
 }
 
-
+void WidgetEdge::set_fleche(float a)
+{
+    m_thickness=a/20;
+}
 
 }

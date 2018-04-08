@@ -140,6 +140,7 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
+        bool m_connexe;
         int m_r;
         float m_K;
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
@@ -237,6 +238,7 @@ class Edge
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+        void set_fleche(float a);
 };
 
 
@@ -278,6 +280,10 @@ class GraphInterface
         grman::WidgetText m_text_ajouter_arete;
         grman::WidgetButton m_supprimer_arete;
         grman::WidgetText m_text_supprimer_arete;
+        grman::WidgetButton m_connexite;
+        grman::WidgetText m_text_connexite;
+        grman::WidgetButton m_flux;
+        grman::WidgetText m_text_flux;
 
 
         // A compléter éventuellement par des widgets de décoration ou
@@ -311,50 +317,68 @@ class Graph
 
 
     public:
+        ///Quelques attributs publics
+        int m_ordre;
+        int m_arete;
+        int ** m_matrice1;
+        std::string fichier;
 
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graph (GraphInterface *interface=nullptr) :
             m_interface(interface)  {  }
 
+        ///Getters & Setters
         int get_num_graph();
         void set_num_graph(int num_graph);
+        void set_fleche();
 
+        ///Sous-programmes d'ajout
+        void ajouter_edge();
+        void ajout_pic();
         void add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
         void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
 
-        /// Méthode spéciale qui construit un graphe arbitraire (démo)
-        /// Voir implémentation dans le .cpp
-        /// Cette méthode est à enlever et remplacer par un système
-        /// de chargement de fichiers par exemple.
-        void make_example();
-        void allouer_mat(int ordre);
-        void Creation(const std::string& nom_du_fichier);
+        ///Boucle et Menu
+        void boucle();
+        void menu();
+
+        ///Sous-programmes de sauvegarde
         void save_pic(const std::string& nom_du_fichier);
+        void sauvegarde();
+
+        ///Lecture de fichier
         void back_pic(const std::string& nom_du_fichier);
+        void back_FC(std::vector<int> vec);
         void lireFichier(std::string nomFichier);
+
+        ///Sous-programmes de supression
         void supprimer_pic();
+        void supprimer_pic_connexe(int idx);
         void supprimer_arete();
-        void ajouter_edge();
+        void supprimer_arete_idx(int idx);
         void test_remove_vertex(int vidx);
         void test_remove_edge(int eidx);
+
+        ///Sous-programmes de création de matrice
+        void allouer_mat(int ordre);
         void generate_matrice();
+
+        ///Sous-programmes pour le flux
         void Temporalite();
         void calcul_K(int idx);
         void calcul_Npop(int idx);
+
+        ///Sous-programmes pour la connexité
         int* uneComposanteFortementConnexe(int** matrice, int ordre, int s);
         int** toutesComposantesConnexes(int**matrice, int ordre);
-        void afficher_connex(Graph g);
-        void ajout_pic();
-        int m_ordre;
-        int m_arete;
-        int ** m_matrice1;
-        std::string fichier;
-        /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-        void update(Graph g);
+        void afficher_connex();
+
+        /// La méthodes update à appeler dans la boucle de jeu pour les graphes avec interface
         void update1();
-        Graph menu(Graph g);
-        void sauvegarde(Graph g);
+
+
+
 
 };
 
